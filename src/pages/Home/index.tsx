@@ -1,4 +1,4 @@
-import banner from "@/assets/images/Banner.png";
+import banner from "@/assets/images/banner.png";
 import FlowBox from "@/components/Boxs/FlowBox";
 import CoinItem from "@/components/Items/CoinItem";
 import About from "@/components/Layout/About";
