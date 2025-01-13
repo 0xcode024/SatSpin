@@ -137,7 +137,7 @@ export default function LeaderBoard() {
             LEADER BOARD
           </div>
           <div className="h-[2px] w-[90%] bg-bgColor5"></div>
-          <div className="flex justify-between gap-10 px-[24%]">
+          <div className="justify-between gap-10 lg:flex">
             {profiles.map(
               (profile, key) =>
                 key < 3 && (

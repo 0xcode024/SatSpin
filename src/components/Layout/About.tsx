@@ -2,27 +2,27 @@ import logo from "@/assets/images/black_logo.png";
 
 const About = () => {
   return (
-    <div className="bg-bgColor3 border-borderColor2 text-tColor4 flex flex-col items-center border-b py-[50px]">
-      <div className="flex gap-4">
+    <div className="flex flex-col items-center border-b border-borderColor2 bg-bgColor3 py-[50px] text-center text-tColor4">
+      <div className="block gap-4 lg:flex">
         <div>Home</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>About US</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>Games</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>Promotions</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>Contact US</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>FAQ</div>
       </div>
-      <div className="flex gap-4">
+      <div className="block gap-4 lg:flex">
         <div>Privacy Policy</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>Terms & Conditions</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>Cookie Policy</div>
-        <div>|</div>
+        <div className="hidden lg:block">|</div>
         <div>Responsible Gaming</div>
       </div>
     </div>

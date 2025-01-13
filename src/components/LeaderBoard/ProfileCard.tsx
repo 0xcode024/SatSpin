@@ -33,8 +33,8 @@ const ProfileCard = ({
     3: "#8C4100",
   };
   return (
-    <div className="transparent font-space relative mt-[100px] h-[360px] w-[264px] rounded-lg">
-      <div className="bg-bgColor6 flex h-[57%] justify-center rounded-t-lg bg-opacity-60">
+    <div className="transparent xs:block relative mt-[100px] hidden h-[360px] w-[264px] rounded-lg font-space">
+      <div className="flex h-[57%] justify-center rounded-t-lg bg-bgColor6 bg-opacity-60">
         <div
           className="absolute top-[10%] h-[80px] w-[160px] rounded-t-full"
           style={{ backgroundColor: bannerData[1] }}
@@ -48,7 +48,7 @@ const ProfileCard = ({
           />
         </div>
         <div
-          className={`text-bg-dark absolute flex items-center justify-center rounded-full ${
+          className={`absolute flex items-center justify-center rounded-full font-bold text-bg-dark ${
             ranking == 1 ? "-top-4 h-24 w-24 text-4xl" : "h-16 w-16"
           } ${customClasses}`}
           style={{
@@ -58,9 +58,9 @@ const ProfileCard = ({
           {rankData[ranking]}
         </div>
       </div>
-      <div className="text-bgColor5 flex h-[43%] flex-col items-center justify-around rounded-b-lg bg-dark">
+      <div className="flex h-[43%] flex-col items-center justify-around rounded-b-lg bg-dark text-bgColor5">
         <div className="text-[24px] font-bold">{name}</div>
-        <div className="bg-bgColor5 h-[2px] w-[60%]"></div>
+        <div className="h-[2px] w-[60%] bg-bgColor5"></div>
         <div className="flex items-center gap-4">
           <span className="text-tColor2">{point}</span>
           <img src={arrow ? polygon_up : polygon_down}></img>

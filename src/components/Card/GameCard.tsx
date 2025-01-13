@@ -5,7 +5,7 @@ interface GameCardProps {
 
 const GameCard = ({ title, image }: GameCardProps) => {
   return (
-    <div className="group relative h-auto w-[50%] overflow-hidden rounded-lg">
+    <div className="group relative h-auto w-[320px] overflow-hidden rounded-lg">
       <div className="h-full w-full opacity-100 transition-all duration-500 ease-in-out group-hover:opacity-30 group-hover:blur-sm group-hover:brightness-100 group-hover:grayscale">
         <div className="absolute left-2 right-0 top-4 z-10 font-impact text-8xl">
           {title}

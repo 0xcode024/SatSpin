@@ -34,7 +34,7 @@ const Header = () => {
     navigate("/profile");
   };
   return (
-    <div className="bg-darkGray border-b-borderColor1 fixed left-0 right-0 top-0 z-50  border-b">
+    <div className="fixed left-0 right-0 top-0 z-50 border-b border-b-borderColor1  bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-12 py-7">
         <div className="flex flex-row gap-4">
           <Link to="/">
@@ -43,7 +43,7 @@ const Header = () => {
             </div>
           </Link>
         </div>
-        <div className="flex gap-5">
+        <div className="hidden gap-5 lg:flex">
           <BalanceBox balance={0.0002} />
           <ButtonDefault
             label="Deposit"
@@ -51,7 +51,7 @@ const Header = () => {
             onClick={() => {}}
           />
         </div>
-        <div className="flex gap-4">
+        <div className="hidden gap-4 md:flex">
           <ButtonDefault
             label="Connect"
             customClasses="bg-bitcoin-orange px-[60px] border-0 font-space text-sm text-black"
@@ -70,78 +70,6 @@ const Header = () => {
             onClick={() => {}}
           ></CustomIconButton>
         </div>
-        {/* {walletType ? (
-          <Menu>
-            <MenuHandler>
-              <Button
-                placeholder={undefined}
-                className="bg-[#ff00ff]"
-                onClick={handleOpenWalletModal}
-              >
-                {addressShortening(paymentAddress)}
-              </Button>
-            </MenuHandler>
-            <MenuList placeholder={undefined} className="bg-dark">
-              <MenuItem placeholder={undefined}>
-                <div
-                  className="flex items-center justify-start gap-2 text-white"
-                  onClick={moveProfile}
-                >
-                  <div>Profile</div>
-                </div>
-              </MenuItem>
-              <MenuItem placeholder={undefined}>
-                <div
-                  className="flex items-center justify-start gap-2 text-white"
-                  onClick={signOut}
-                >
-                  <div>Logout</div>
-                </div>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        ) : (
-          <Menu>
-            <MenuHandler>
-              <Button
-                placeholder={undefined}
-                className="bg-[#ff00ff]"
-                onClick={handleOpenWalletModal}
-              >
-                Connect Wallet
-              </Button>
-            </MenuHandler>
-            <MenuList placeholder={undefined} className="bg-dark">
-              <MenuItem placeholder={undefined}>
-                <div
-                  className="flex items-center justify-start gap-2 text-white"
-                  onClick={() => connectWallet("Unisat")}
-                >
-                  <Unisat />
-                  <div>Unisat</div>
-                </div>
-              </MenuItem>
-              <MenuItem placeholder={undefined}>
-                <div
-                  className="flex items-center justify-start gap-2 text-white"
-                  onClick={() => connectWallet("Xverse")}
-                >
-                  <img src={xverse} />
-                  <div>Xverse</div>
-                </div>
-              </MenuItem>
-              <MenuItem placeholder={undefined}>
-                <div
-                  className="flex items-center justify-start gap-2 text-white"
-                  onClick={() => connectWallet("MagicEden")}
-                >
-                  <img src={magiceden} width={30} />
-                  <div>Magic Eden</div>
-                </div>
-              </MenuItem>
-            </MenuList>
-          </Menu>
-        )} */}
       </div>
     </div>
   );

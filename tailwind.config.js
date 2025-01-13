@@ -75,6 +75,9 @@ export default withMT({
     },
     fontFamily: {},
     extend: {
+      screens: {
+        xs: "480px",
+      },
       backgroundImage: {
         "radial-gradient":
           "radial-gradient(50% 100% at 25% 3%, #13355BEE 0%, #0F203EEE 40%, #0A1128EE 100%)",
