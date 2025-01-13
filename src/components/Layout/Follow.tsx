@@ -4,20 +4,20 @@ import discord from "@/assets/icons/Contact/discord.png";
 
 const Follow = () => {
   return (
-    <div className="flex items-center justify-evenly border-b border-borderColor2 bg-bgColor3 py-8">
-      <div className="xs:text-5xl flex-1 font-space text-4xl font-bold text-tColor4 sm:text-6xl">
+    <div className="flex flex-col items-center justify-evenly border-b border-borderColor2 bg-bgColor3 py-0 md:flex-row md:py-8">
+      <div className="xs:text-5xl w-full flex-1 border-b border-borderColor2 py-4 font-space text-4xl font-bold text-tColor4 sm:text-6xl md:border-0 md:py-0">
         <div className="px-10 sm:px-16">
           <div>Follow</div>
           <div>Us!</div>
         </div>
       </div>
-      <div className="h-[130px] w-[1px] bg-borderColor2"></div>
-      <div className="hidden flex-1 text-left text-center text-tColor4 lg:block">
+      <div className="hidden h-[130px] w-[1px] bg-borderColor2 md:block"></div>
+      <div className="w-full flex-1 border-b border-borderColor2 py-10 text-left text-center text-tColor4 md:border-0">
         Stay Updated! Follow Us and Never Miss the <br /> Latest News &
         Opportunities!
       </div>
-      <div className="h-[130px] w-[1px] bg-borderColor2"></div>
-      <div className="hidden flex-1 justify-evenly md:flex">
+      <div className="hidden h-[130px] w-[1px] bg-borderColor2 md:block"></div>
+      <div className="flex w-full flex-1 items-center justify-center gap-8 py-10">
         <div>
           <img src={x} alt="x"></img>
         </div>
