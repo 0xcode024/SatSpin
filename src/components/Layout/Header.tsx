@@ -24,24 +24,16 @@ import go from "@/assets/icons/go.png";
 
 const Header = () => {
   const navigate = useNavigate();
-
-  const [modalOpen, setModalOpen] = useState(false);
-  const { connectWallet, walletType, paymentAddress, signOut } = useAuth();
-  const handleOpenWalletModal = () => {
-    setModalOpen(!modalOpen);
-  };
-  const moveProfile = () => {
-    navigate("/profile");
-  };
   return (
     <div className="fixed left-0 right-0 top-0 z-50 border-b border-b-borderColor1  bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-12 py-7">
         <div className="flex flex-row gap-4">
-          <Link to="/">
-            <div className="flex cursor-pointer items-center justify-start gap-2">
-              <img src={logo} width={175} />
-            </div>
-          </Link>
+          <div
+            className="flex cursor-pointer items-center justify-start gap-2"
+            onClick={() => navigate("/")}
+          >
+            <img src={logo} width={175} />
+          </div>
         </div>
         <div className="hidden gap-5 lg:flex">
           <BalanceBox balance={0.0002} />
