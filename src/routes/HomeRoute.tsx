@@ -1,6 +1,7 @@
 import path from "@/constants/path";
 import Home from "@/pages/Home";
 import LeaderBoard from "@/pages/LeaderBoard";
+import Setting from "@/pages/Setting";
 const HomeRoutes = [
   {
     path: path.HOME,
@@ -9,6 +10,10 @@ const HomeRoutes = [
   {
     path: path.LEADERBOARD,
     element: <LeaderBoard />,
+  },
+  {
+    path: path.SETTING,
+    element: <Setting />,
   },
 ];
 
