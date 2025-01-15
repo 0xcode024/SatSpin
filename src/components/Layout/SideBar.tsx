@@ -10,7 +10,7 @@ const SideBar = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="z-5 group fixed bottom-0 left-0  top-[118px] flex w-[50px] flex-col border-r border-r-borderColor1 bg-bg-dark transition-all duration-500 ease-in-out hover:w-[84px]">
+    <div className="group fixed bottom-0 left-0 top-[118px]  z-10 flex w-[50px] flex-col border-r border-r-borderColor1 bg-bg-dark transition-all duration-500 ease-in-out hover:w-[84px]">
       <CustomIconButton
         icon={home}
         size={25}
