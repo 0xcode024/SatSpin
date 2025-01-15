@@ -30,7 +30,7 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="fixed left-0 right-0 top-0 z-10 border-b border-b-borderColor1  bg-darkGray">
+    <div className="fixed left-0 right-0 top-0 z-20 border-b border-b-borderColor1  bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-12 py-7">
         <div className="flex flex-row gap-4">
           <div
