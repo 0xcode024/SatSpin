@@ -21,11 +21,16 @@ import ButtonDefault from "../Buttons/ButtonDefault";
 import CustomIconButton from "../Buttons/IconButton";
 import sound from "@/assets/icons/sound.png";
 import go from "@/assets/icons/go.png";
+interface HeaderProps {
+  onDeposit: () => void;
+  onConnect: () => void;
+}
 
-const Header = () => {
+const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   const navigate = useNavigate();
+
   return (
-    <div className="fixed left-0 right-0 top-0 z-50 border-b border-b-borderColor1  bg-darkGray">
+    <div className="z-5 fixed left-0 right-0 top-0 border-b border-b-borderColor1  bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-12 py-7">
         <div className="flex flex-row gap-4">
           <div
@@ -40,14 +45,14 @@ const Header = () => {
           <ButtonDefault
             label="Deposit"
             customClasses="bg-darkButton px-[60px] border-0 font-space text-sm"
-            onClick={() => {}}
+            onClick={() => onDeposit()}
           />
         </div>
         <div className="hidden gap-4 md:flex">
           <ButtonDefault
             label="Connect"
             customClasses="bg-bitcoin-orange px-[60px] border-0 font-space text-sm text-black"
-            onClick={() => {}}
+            onClick={() => onConnect()}
           />
           <CustomIconButton
             icon={go}

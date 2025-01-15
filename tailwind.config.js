@@ -64,6 +64,7 @@ export default withMT({
       tColor3: "#F9FAFB",
       tColor4: "#646464",
       tColor5: "#E3891C",
+      tColor6: "#696969",
       bgColor1: "#333333",
       bgColor2: "#242526",
       bgColor3: "#0D0D0D",
@@ -72,6 +73,10 @@ export default withMT({
       bgColor6: "#464646",
       bgColor7: "#303132",
       bgColor8: "#121212",
+      bgColor9: "#090909",
+      bgColor10: "#1C1C1C",
+      bgColor11: "#2B2B2B",
+      bgColor12: "#6C6C6C",
     },
     fontFamily: {},
     extend: {
