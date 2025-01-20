@@ -1,9 +1,10 @@
 interface GameCardProps {
   title: string;
   image: any;
+  onClick: () => void;
 }
 
-const GameCard = ({ title, image }: GameCardProps) => {
+const GameCard = ({ title, image, onClick }: GameCardProps) => {
   return (
     <div className="group relative h-auto w-[250px] cursor-pointer overflow-hidden rounded-lg sm:w-[320px]">
       <div className="h-full w-full opacity-100 transition-all duration-500 ease-in-out group-hover:opacity-30 group-hover:blur-sm group-hover:brightness-100 group-hover:grayscale">
@@ -17,7 +18,10 @@ const GameCard = ({ title, image }: GameCardProps) => {
         />
       </div>
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100">
-        <div className="px-8 py-4 font-space text-3xl font-bold text-white">
+        <div
+          className="px-8 py-4 font-space text-3xl font-bold text-white"
+          onClick={onClick}
+        >
           PLAY
         </div>
       </div>

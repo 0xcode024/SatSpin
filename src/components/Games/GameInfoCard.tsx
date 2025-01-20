@@ -4,8 +4,14 @@ interface GameInfoCardProps {
   image: any;
   title: string;
   description: string;
+  url: string;
 }
-const GameInfoCard = ({ image, title, description }: GameInfoCardProps) => {
+const GameInfoCard = ({
+  image,
+  title,
+  description,
+  url,
+}: GameInfoCardProps) => {
   return (
     <div
       className="flex h-[400px] w-full flex-col items-end justify-end rounded-xl bg-cover bg-center font-space transition-all duration-1000 ease-in-out hover:brightness-125"

@@ -3,9 +3,11 @@ import games from "@/assets/icons/SideBar/games.png";
 import coin_flip from "@/assets/images/coin_flip.png";
 import lucky_wheel from "@/assets/images/lucky_wheel.png";
 import coin_flip_pvp from "@/assets/images/coin_flip_pvp.png";
-
+import { useNavigate } from "react-router-dom";
 import GameCard from "../Card/GameCard";
 const Games = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="justify-center bg-bgColor2 px-[30px] pb-[30px] pt-[105px] font-space md:pb-[65px] md:pt-[195px] xl:flex">
       <div className="w-full xl:w-[34%]">
@@ -14,7 +16,7 @@ const Games = () => {
             <img src={games} alt="Games" width="30px"></img>
           </div>
           <div className="h-[60px] w-[2px] bg-white"></div>
-          <div className="xs:text-3xl flex gap-2 text-2xl">
+          <div className="flex gap-2 text-2xl xs:text-3xl">
             <span className="font-bold">POPULAR</span>
             <span>GAMES</span>
           </div>
@@ -34,12 +36,23 @@ const Games = () => {
         </div>
       </div>
       <div className="flex w-full flex-col items-center justify-center gap-10 lg:flex-row lg:justify-between xl:w-[60%]">
-        {/* <div className="w-[100px] ">This is div</div>
-        <div className="w-[100px] ">This is div</div> */}
-
-        <GameCard title="COIN FLIP" image={coin_flip}></GameCard>
-        <GameCard title="LUCKY WHEEL" image={lucky_wheel}></GameCard>
-        <GameCard title="COIN FLIP" image={coin_flip_pvp}></GameCard>
+        <GameCard
+          title="COIN FLIP"
+          image={coin_flip}
+          onClick={() => {
+            navigate("/coinflip");
+          }}
+        ></GameCard>
+        <GameCard
+          title="LUCKY WHEEL"
+          image={lucky_wheel}
+          onClick={() => {}}
+        ></GameCard>
+        <GameCard
+          title="COIN FLIP"
+          image={coin_flip_pvp}
+          onClick={() => {}}
+        ></GameCard>
       </div>
     </div>
   );
