@@ -1,4 +1,5 @@
 import path from "@/constants/path";
+import CoinFlip from "@/pages/Games/CoinFlip";
 import Home from "@/pages/Home";
 import LeaderBoard from "@/pages/LeaderBoard";
 import Setting from "@/pages/Setting";
@@ -14,6 +15,10 @@ const HomeRoutes = [
   {
     path: path.SETTING,
     element: <Setting />,
+  },
+  {
+    path: path.COINFLIP,
+    element: <CoinFlip />,
   },
 ];
 

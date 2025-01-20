@@ -3,4 +3,5 @@ export default {
   PROFILE: "/profile",
   LEADERBOARD: "/leaderboard",
   SETTING: "/setting",
+  COINFLIP: "/coinflip",
 };

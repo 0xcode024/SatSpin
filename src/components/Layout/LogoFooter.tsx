@@ -1,8 +1,13 @@
 import logo from "@/assets/images/black_logo.png";
 
-const LogoFooter = () => {
+interface LogoFooterProps {
+  customClasses: string;
+}
+const LogoFooter = ({ customClasses }: LogoFooterProps) => {
   return (
-    <div className="bg-bgColor3 border-borderColor2 flex items-center justify-center border-b py-[50px]">
+    <div
+      className={`flex items-center justify-center border-b border-borderColor2  py-[50px] ${customClasses}`}
+    >
       <img src={logo} alt="logo" width="110px"></img>
     </div>
   );

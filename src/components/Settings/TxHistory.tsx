@@ -30,15 +30,6 @@ const TxHistory = () => {
                 amount={tx.amount}
               />
             ))}
-            {/* <tr className="hover:bg-teal-100">
-            <td className="border-borderColor3 border-b p-3">
-              <img src={bitcoin}></img>
-            </td>
-            <td className="border-borderColor3 border-b p-8">Griffin</td>
-            <td className="border-borderColor3 border-b p-8">$100</td>
-            <td className="border-borderColor3 border-b p-8">Peter</td>
-            <td className="border-borderColor3 border-b p-8">Peter</td>
-          </tr> */}
           </tbody>
         </table>
       </div>

@@ -1,8 +1,13 @@
 import logo from "@/assets/images/black_logo.png";
 
-const About = () => {
+interface AboutProps {
+  customClasses: string;
+}
+const About = ({ customClasses }: AboutProps) => {
   return (
-    <div className="flex flex-col items-center border-b border-borderColor2 bg-bgColor3 py-[50px] text-center text-tColor4">
+    <div
+      className={`flex flex-col items-center border-b border-borderColor2  py-[50px] text-center text-tColor4 ${customClasses}`}
+    >
       <div className="block gap-4 lg:flex">
         <div>Home</div>
         <div className="hidden lg:block">|</div>

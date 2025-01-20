@@ -6,8 +6,8 @@ const BaseFooter = () => {
   return (
     <div>
       <Follow />
-      <LogoFooter />
-      <About />
+      <LogoFooter customClasses="bg-bgColor3" />
+      <About customClasses="bg-bgColor3" />
     </div>
   );
 };
