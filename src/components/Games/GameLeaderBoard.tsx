@@ -1,11 +1,14 @@
 import { rankData } from "@/static/leaderboard";
-import LeaderBoardcard from "./LeaderBoradCard";
+import LeaderBoardcard from "./CoinFlip/LeaderBoradCard";
 import adm from "@/assets/images/profile/adm.png";
-const CoinflipLeaderboard = () => {
+interface GameLeaderboardProps {
+  title: string;
+}
+const GameLeaderboard = ({ title }: GameLeaderboardProps) => {
   return (
     <div className="overflow-hidden rounded-lg font-space text-xl font-bold">
       <div className="bg-bgColor21 py-8 text-center">
-        COIN FLIP - LEADER BOARD
+        {title} - LEADER BOARD
       </div>
       <div className="h-[600px] overflow-auto">
         {rankData.map((data, key) => (
@@ -27,4 +30,4 @@ const CoinflipLeaderboard = () => {
   );
 };
 
-export default CoinflipLeaderboard;
+export default GameLeaderboard;

@@ -1,5 +1,6 @@
 import lukcywhell from "@/assets/images/games/lucky_wheel.png";
 import ButtonDefault from "../Buttons/ButtonDefault";
+import { useNavigate } from "react-router-dom";
 interface GameInfoCardProps {
   image: any;
   title: string;
@@ -12,6 +13,7 @@ const GameInfoCard = ({
   description,
   url,
 }: GameInfoCardProps) => {
+  const navigate = useNavigate();
   return (
     <div
       className="flex h-[400px] w-full flex-col items-end justify-end rounded-xl bg-cover bg-center font-space transition-all duration-1000 ease-in-out hover:brightness-125"
@@ -35,7 +37,9 @@ const GameInfoCard = ({
           <ButtonDefault
             label="Play Now"
             customClasses="bg-bgColor5 text-black border-0 text-xl font-bold py-[20px] pl-8 pr-20 rounded-r-none"
-            onClick={() => {}}
+            onClick={() => {
+              navigate(url);
+            }}
           ></ButtonDefault>
         </div>
       </div>

@@ -91,6 +91,12 @@ export default withMT({
       bgColor22: "#888888",
       bgColor23: "#49BA58",
       bgColor24: "#69FF7D",
+      bgColor25: "#2A5830",
+      bgColor26: "#1C1C1C",
+      bgColor27: "#767676",
+      bgColor28: "#151515",
+      bgColor29: "#222222",
+      bgColor29: "#222222",
     },
     fontFamily: {},
     extend: {

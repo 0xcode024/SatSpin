@@ -4,4 +4,6 @@ export default {
   LEADERBOARD: "/leaderboard",
   SETTING: "/setting",
   COINFLIP: "/coinflip",
+  LUCKEYWHEEL: "/luckywheel",
+  COINFLIPPVP: "/coinflip_pvp",
 };

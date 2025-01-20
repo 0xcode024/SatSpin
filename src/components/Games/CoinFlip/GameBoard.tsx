@@ -1,5 +1,5 @@
 import gameHistoryData from "@/static/gameHistory";
-import CoinflipLeaderboard from "./CoinFlipLeaderBoard";
+import CoinflipLeaderboard from "../GameLeaderBoard";
 import GameBottomBar from "./GameBottomBar";
 import GameHistoryItem from "./GameHistoryItem";
 import GameSquare from "./GameSquare";

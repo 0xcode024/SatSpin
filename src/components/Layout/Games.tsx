@@ -42,17 +42,15 @@ const Games = () => {
           onClick={() => {
             navigate("/coinflip");
           }}
-        ></GameCard>
+        />
         <GameCard
           title="LUCKY WHEEL"
           image={lucky_wheel}
-          onClick={() => {}}
-        ></GameCard>
-        <GameCard
-          title="COIN FLIP"
-          image={coin_flip_pvp}
-          onClick={() => {}}
-        ></GameCard>
+          onClick={() => {
+            navigate("/luckywheel");
+          }}
+        />
+        <GameCard title="COIN FLIP" image={coin_flip_pvp} onClick={() => {}} />
       </div>
     </div>
   );

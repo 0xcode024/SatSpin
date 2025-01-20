@@ -7,7 +7,7 @@ const gameInfoData = [
     title: "Lucky Wheel",
     description:
       "Clorful whell divided into multiple sections, each representin different prizes or outcomes",
-    url: "",
+    url: "/luckywheel",
   },
   {
     image: coinflip_pvp,
