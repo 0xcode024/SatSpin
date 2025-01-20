@@ -5,6 +5,7 @@ import betData from "@/static/betdata";
 import BetItem from "./BetItem";
 import DonutChart from "./DonutChart";
 import bitcoin from "@/assets/images/coins/bitcoin.png";
+import ButtonDefault from "@/components/Buttons/ButtonDefault";
 
 const GameSquare = () => {
   const size = 400;
@@ -21,6 +22,17 @@ const GameSquare = () => {
           backgroundBlendMode: "blend", // or another blend mode
         }}
       >
+        <div className="absolute top-14 flex w-full flex-col items-center justify-between gap-2 px-[20px] lg:flex-row">
+          <div className="flex gap-2 text-sm opacity-[30%]">
+            <div>Lucky Wheel Powered by</div>
+            <img src={logo} width="70px" />
+          </div>
+          <ButtonDefault
+            label="HISTORY"
+            customClasses="text-sm text-tColor2 bg-bgColor31"
+            onClick={() => {}}
+          />
+        </div>
         <div className="relative">
           {/* <div className="absolute left-[-50px] top-[-50px] flex h-[480px] w-[480px]  items-center justify-center">
             <svg
