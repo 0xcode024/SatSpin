@@ -4,8 +4,8 @@ import vector_img from "@/assets/images/vector.png";
 
 const PlayerBar = () => {
   return (
-    <div className="relative w-[25%] overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%]">
-      <div className="bg-bgColor8 py-7 text-center"> GAME HISTORY</div>
+    <div className="relative w-[300px] overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%]">
+      <div className="bg-bgColor8 py-7 text-center"> PLAYERS </div>
       <div className="flex h-[560px] flex-col gap-2 overflow-auto bg-bgColor11">
         {playerInfoData.map((data, key) => (
           <PlayerInfoItem

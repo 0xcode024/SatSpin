@@ -4,12 +4,10 @@ import GameSquare from "./GameSquare";
 import PlayerBar from "../PlayerBar";
 const GameBoard = () => {
   return (
-    <div className="relative mt-14 flex justify-between overflow-hidden  rounded-lg font-space text-xl">
+    <div className="relative mt-14 flex h-full justify-between  overflow-hidden rounded-lg font-space text-xl">
       <PlayerBar />
-      <div className="w-[100%]">
-        <GameSquare />
-      </div>
-      <div className="flex w-[30%] flex-col bg-bgColor11">
+      <GameSquare />
+      <div className="flex w-[370px] flex-col bg-bgColor11">
         <div className="flex items-center justify-between bg-bgColor21 px-5 py-7 text-sm">
           <div className="text-tColor2">Round No: 5554</div>
           <div className="rounded-lg border border-bgColor24 bg-bgColor25 bg-red-300 p-2 text-bgColor24">

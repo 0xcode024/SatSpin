@@ -9,12 +9,12 @@ import ButtonDefault from "@/components/Buttons/ButtonDefault";
 
 const GameSquare = () => {
   const size = 400;
-  const ringSize = 80 * 0.8; // Inner ring 80 (80% of the parent size)
-  const borderWidth = 80 * 0.1; // Border width (10% of the size)
+  const ringSize = 80 * 0.8;
+  const borderWidth = 80 * 0.1;
   return (
-    <div className="flex h-full flex-col justify-between">
+    <div className="flex h-full flex-grow flex-col">
       <div
-        className="relative flex h-full w-full items-center justify-center gap-2 pb-2"
+        className="relative flex h-[500px] items-center justify-center gap-2 pb-2"
         style={{
           backgroundImage: `url(${square})`,
           backgroundSize: "cover",
@@ -41,7 +41,6 @@ const GameSquare = () => {
               viewBox="0 0 100 100"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Static Background Circle */}
               <circle
                 cx="50"
                 cy="50"
@@ -57,10 +56,10 @@ const GameSquare = () => {
                 r="45"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2" /* Spinning circle's stroke width */
-                strokeDasharray="283" /* Circumference of the circle (2 * π * r) */
-                strokeDashoffset="75" /* Creates the spinning effect */
-                strokeLinecap="round" /* Smooth edges */
+                strokeWidth="2"
+                strokeDasharray="283"
+                strokeDashoffset="75"
+                strokeLinecap="round"
                 className="text-[#5A5A5A]"
               />
             </svg>
@@ -75,8 +74,8 @@ const GameSquare = () => {
           <DonutChart />
         </div>
       </div>
-      <div className="bg-borderColor2 p-5">
-        <div className="flex w-[100%] items-center gap-4 overflow-auto rounded-lg bg-bgColor29 p-3">
+      <div className="overflow-x-auto bg-borderColor2 p-5">
+        <div className="flex items-center gap-4 overflow-x-auto rounded-lg bg-bgColor29 p-3">
           {betData.map((data, key) => (
             <BetItem amount={data.amount} key={key} />
           ))}

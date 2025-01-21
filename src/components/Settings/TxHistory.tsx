@@ -8,7 +8,7 @@ const TxHistory = () => {
       <div>
         <table className="border-gray-300 w-full border-collapse font-space">
           <thead className="bg-tColor5">
-            <tr className="border text-bgColor8">
+            <tr className="text-bgColor8">
               <th className="rounded-bl-lg rounded-tl-lg p-3 text-left">
                 Transactions
               </th>

@@ -31,7 +31,9 @@ const LeaderBoardcard = ({
         >
           {ranking}
         </div>
-        <div style={{ color: color }}>{name}</div>
+        <div style={{ color: color }} className="hidden sm:block">
+          {name}
+        </div>
         <div className="text-bgColor22">º</div>
         <div className="text-bgColor22">{streak}x STREAK</div>
         <div className="text-bgColor23">${amount}</div>
