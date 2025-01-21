@@ -2,14 +2,14 @@ import SlideBar from "./SlideBar";
 
 const GameBottomBar = () => {
   return (
-    <div className="align-center absolute bottom-0 flex w-[84%] flex-col justify-between bg-black px-6 py-4 lg:flex-row">
+    <div className="align-center absolute bottom-0 flex w-[84%] justify-between bg-black px-6 py-4">
       <div className="w-[300px]">
         <div className="text-lg">AUTO BET AMOUNT</div>
         <div className="w-full py-4">
           <SlideBar />
         </div>
       </div>
-      <div className="flex-between flex flex-col gap-16 lg:flex-row">
+      <div className="flex-between flex gap-16">
         <div className="">
           <div className="text-lg">POTENTIAL WIN</div>
           <div className="rounded-lg bg-bgColor2 py-4 pl-6 pr-28 text-xl">
