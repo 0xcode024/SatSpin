@@ -19,6 +19,7 @@ import square from "@/assets/images/square.png";
 
 import ProfileItem from "@/components/LeaderBoard/ProfileItem";
 import BaseFooter from "@/components/Layout/BaseFooter";
+import { useEffect } from "react";
 
 export default function LeaderBoard() {
   const profiles = [
@@ -121,6 +122,10 @@ export default function LeaderBoard() {
       point: 2857,
     },
   ];
+  useEffect(() => {
+    // Scroll to the top of the page when the component mounts
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className=" pl-[50px] pt-[118px]">
       <div className="">

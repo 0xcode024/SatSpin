@@ -1,16 +1,36 @@
 import bitcoin from "@/assets/images/coins/bitcoin.png";
 import ButtonDefault from "@/components/Buttons/ButtonDefault";
-import GameSquare from "./GameSquare";
+// import GameSquare from "./GameSquare";
 import PlayerBar from "../PlayerBar";
+import CreateGameItem from "./CreateGameItem";
+import JoinGameItem from "./JoinGameItem";
+import PlayerItem from "./PlayerItem";
+import adm from "@/assets/images/profile/adm.png";
+import GameRound from "./GameRound";
+import BlurGameRound from "./BlurGameRound";
+import WinGameRound from "./WinGameRound";
 const GameBoard = () => {
   return (
     <div className="relative mt-14 flex justify-between overflow-hidden  rounded-lg font-space text-xl">
       <PlayerBar />
-      <div className="w-[100%]">
-        <GameSquare />
+      <div className="w-[100%] bg-bgColor11 p-4">
+        <div className="grid grid-cols-3 gap-4">
+          <CreateGameItem />
+          <GameRound />
+          <WinGameRound />
+          <JoinGameItem />
+          <GameRound />
+          <GameRound />
+          <GameRound />
+          <GameRound />
+          <BlurGameRound />
+        </div>
+        {/* <CreateGameItem />
+        <JoinGameItem />
+        <GameRound /> */}
       </div>
-      <div className="flex w-[30%] flex-col bg-bgColor11">
-        <div className="flex items-center justify-between bg-bgColor21 px-5 py-7 text-sm">
+      {/* <div className="flex w-[30%] flex-col bg-bgColor11"> */}
+      {/* <div className="flex items-center justify-between bg-bgColor21 px-5 py-7 text-sm">
           <div className="text-tColor2">Round No: 5554</div>
           <div className="rounded-lg border border-bgColor24 bg-bgColor25 bg-red-300 p-2 text-bgColor24">
             00:21
@@ -67,8 +87,8 @@ const GameBoard = () => {
             customClasses="border-0 bg-bgColor28"
             onClick={() => {}}
           />
-        </div>
-      </div>
+        </div> */}
+      {/* </div> */}
     </div>
   );
 };

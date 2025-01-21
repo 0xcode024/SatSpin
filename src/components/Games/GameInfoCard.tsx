@@ -40,7 +40,7 @@ const GameInfoCard = ({
             onClick={() => {
               navigate(url);
             }}
-          ></ButtonDefault>
+          />
         </div>
       </div>
     </div>

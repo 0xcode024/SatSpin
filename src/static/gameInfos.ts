@@ -14,7 +14,7 @@ const gameInfoData = [
     title: "Coin Flip PVP",
     description:
       "Players choose one side, and then the coin is flipped either physically or virtually.",
-    url: "",
+    url: "/coinflip-pvp",
   },
 
   {

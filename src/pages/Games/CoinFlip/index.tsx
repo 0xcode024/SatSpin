@@ -5,8 +5,12 @@ import gameInfoData from "@/static/gameInfos";
 import LogoFooter from "@/components/Layout/LogoFooter";
 import About from "@/components/Layout/About";
 import GameInfoCard from "@/components/Games/GameInfoCard";
+import { useEffect } from "react";
 
 const CoinFlip = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="rounded-lg bg-gradient-to-b from-darkGray to-bg-dark pl-[50px] pt-[118px]">
       <img src={coinflip_banner}></img>

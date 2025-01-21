@@ -41,6 +41,7 @@ const Games = () => {
           image={coin_flip}
           onClick={() => {
             navigate("/coinflip");
+            window.scrollTo(0, 0);
           }}
         />
         <GameCard
@@ -48,9 +49,17 @@ const Games = () => {
           image={lucky_wheel}
           onClick={() => {
             navigate("/luckywheel");
+            window.scrollTo(0, 0);
           }}
         />
-        <GameCard title="COIN FLIP" image={coin_flip_pvp} onClick={() => {}} />
+        <GameCard
+          title="COIN FLIP"
+          image={coin_flip_pvp}
+          onClick={() => {
+            navigate("/coinflip-pvp");
+            window.scrollTo(0, 0);
+          }}
+        />
       </div>
     </div>
   );

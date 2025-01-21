@@ -5,5 +5,5 @@ export default {
   SETTING: "/setting",
   COINFLIP: "/coinflip",
   LUCKEYWHEEL: "/luckywheel",
-  COINFLIPPVP: "/coinflip_pvp",
+  COINFLIPPVP: "/coinflip-pvp",
 };
