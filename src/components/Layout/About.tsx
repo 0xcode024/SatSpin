@@ -6,28 +6,28 @@ interface AboutProps {
 const About = ({ customClasses }: AboutProps) => {
   return (
     <div
-      className={`flex flex-col items-center border-b border-borderColor2  py-[50px] text-center text-tColor4 ${customClasses}`}
+      className={`lg:text-md flex flex-col items-center border-b border-borderColor2 py-[50px] text-center text-[10px] text-white sm:text-xs md:text-sm lg:text-tColor4 ${customClasses}`}
     >
-      <div className="block gap-4 lg:flex">
+      <div className="flex gap-1 md:gap-2 lg:gap-4">
         <div>Home</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>About US</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>Games</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>Promotions</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>Contact US</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>FAQ</div>
       </div>
-      <div className="block gap-4 lg:flex">
+      <div className="flex gap-1 md:gap-2 lg:gap-4">
         <div>Privacy Policy</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>Terms & Conditions</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>Cookie Policy</div>
-        <div className="hidden lg:block">|</div>
+        <div className="">|</div>
         <div>Responsible Gaming</div>
       </div>
     </div>

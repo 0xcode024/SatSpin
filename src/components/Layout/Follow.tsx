@@ -4,8 +4,8 @@ import discord from "@/assets/icons/Contact/discord.png";
 
 const Follow = () => {
   return (
-    <div className="flex flex-col items-center justify-evenly border-b border-borderColor2 bg-bgColor3 py-0 md:flex-row md:py-8">
-      <div className="xs:text-5xl w-full flex-1 border-b border-borderColor2 py-4 font-space text-4xl font-bold text-tColor4 sm:text-6xl md:border-0 md:py-0">
+    <div className="hidden flex-col items-center justify-evenly border-b border-borderColor2 bg-bgColor3 py-0 md:flex-row md:py-8 lg:flex">
+      <div className="w-full flex-1 border-b border-borderColor2 py-4 font-space text-4xl font-bold text-tColor4 sm:text-6xl md:border-0 md:py-0 xs:text-5xl">
         <div className="px-10 sm:px-16">
           <div>Follow</div>
           <div>Us!</div>

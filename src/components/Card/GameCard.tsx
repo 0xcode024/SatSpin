@@ -8,7 +8,7 @@ import pvp from "@/assets/images/game_icons/PVP.png";
 const GameCard = ({ title, image, index, onClick }: GameCardProps) => {
   return (
     <div
-      className="group relative h-auto w-[250px] cursor-pointer overflow-hidden rounded-lg sm:w-[320px]"
+      className="group relative hidden h-auto w-[250px] cursor-pointer overflow-hidden rounded-lg sm:w-[320px] lg:block"
       onClick={onClick}
     >
       <div className="h-full w-full opacity-100 transition-all duration-500 ease-in-out group-hover:opacity-30 group-hover:blur-sm group-hover:brightness-100 group-hover:grayscale">

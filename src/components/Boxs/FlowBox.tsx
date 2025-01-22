@@ -28,7 +28,7 @@ const FlowBox = () => {
   ];
   const repeatedItems = Array(3).fill(items).flat();
   return (
-    <div className="flex items-center gap-10 bg-bgColor1 px-5 py-6">
+    <div className="hidden items-center gap-10 bg-bgColor1 px-5 py-6 lg:flex">
       <Marquee speed={180}>
         <div className="flex">
           {repeatedItems.map((item, index) => (
