@@ -8,10 +8,10 @@ interface BalanceBoxProps {
 
 const BalanceBox: React.FC<BalanceBoxProps> = ({ balance }) => {
   return (
-    <div className="flex items-center justify-center gap-16 rounded-lg border px-3">
-      <div className="text-grayFont font-space text-sm">BALANCE</div>
+    <div className="flex items-center justify-center gap-4 rounded-lg border px-3 font-space text-xs sm:gap-8 sm:text-sm md:gap-16">
+      <div className="text-grayFont">BALANCE</div>
       <div className="flex items-center gap-2 py-2">
-        <p className="font-space text-sm">{balance}</p>
+        <p>{balance}</p>
         <img src={bitcoin} width={18} alt="Bitcoin Icon" />
       </div>
     </div>

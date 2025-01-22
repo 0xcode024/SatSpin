@@ -1,6 +1,6 @@
 const CreateGameItem = () => {
   return (
-    <div className="to-bgColor32 flex w-full flex-col justify-center rounded-lg bg-white bg-gradient-to-b from-bgColor29 px-20 py-10">
+    <div className="flex h-full w-full flex-col justify-center rounded-lg bg-white bg-gradient-to-b from-bgColor29 to-bgColor32 px-20 py-10">
       <div className="text-sm">SET AMOUNT</div>
       <div className="flex justify-between gap-4">
         <div className="rounded-lg bg-bgColor29 py-4 pl-5 pr-10">$ 200</div>

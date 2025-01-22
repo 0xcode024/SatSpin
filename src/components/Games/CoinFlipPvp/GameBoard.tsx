@@ -14,16 +14,34 @@ const GameBoard = () => {
     <div className="relative mt-14 flex justify-between overflow-hidden  rounded-lg font-space text-xl">
       <PlayerBar />
       <div className="w-[100%] bg-bgColor11 p-4">
-        <div className="grid grid-cols-3 gap-4">
-          <CreateGameItem />
-          <GameRound />
-          <WinGameRound />
-          <JoinGameItem />
-          <GameRound />
-          <GameRound />
-          <GameRound />
-          <GameRound />
-          <BlurGameRound />
+        <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
+          <div className="hidden lg:block">
+            <CreateGameItem />
+          </div>
+          <div className="hidden 2xl:block">
+            <GameRound />
+          </div>
+          <div>
+            <WinGameRound />
+          </div>
+          <div className="hidden lg:block">
+            <JoinGameItem />
+          </div>
+          <div className="hidden 2xl:block">
+            <GameRound />
+          </div>
+          <div className="hidden lg:block">
+            <GameRound />
+          </div>
+          <div>
+            <GameRound />
+          </div>
+          <div className="hidden 2xl:block">
+            <GameRound />
+          </div>
+          <div>
+            <BlurGameRound />
+          </div>
         </div>
         {/* <CreateGameItem />
         <JoinGameItem />
