@@ -16,6 +16,7 @@ import wade6 from "@/assets/images/profile/wade6.png";
 import wade7 from "@/assets/images/profile/wade7.png";
 import wade8 from "@/assets/images/profile/wade8.png";
 import square from "@/assets/images/square.png";
+import casino_back from "@/assets/mobile/casino_back.png";
 
 import ProfileItem from "@/components/LeaderBoard/ProfileItem";
 import BaseFooter from "@/components/Layout/BaseFooter";
@@ -127,22 +128,23 @@ export default function LeaderBoard() {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className=" pl-[50px] pt-[118px]">
-      <div className="">
-        <div
-          className="relative flex flex-col items-center gap-2 pb-8"
-          style={{
-            backgroundImage: `url(${square}), radial-gradient(circle, #292219, #111111)`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundBlendMode: "blend", // or another blend mode
-          }}
-        >
-          <div className="mt-32 font-space text-3xl font-bold text-tColor5">
-            LEADER BOARD
+    <div className="pl-0 pt-[118px] font-space lg:pl-[50px]">
+      <div
+        className="px-[10%] brightness-125"
+        style={{
+          backgroundImage: `url(${square}), radial-gradient(circle, #292219, #111111)`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundBlendMode: "blend", // or another blend mode
+        }}
+      >
+        <div className="relative flex flex-col items-center gap-2 pb-8">
+          <div className="mt-32 font-space font-bold text-tColor5">
+            <span className="hidden text-3xl lg:block">LEADER BOARD</span>
+            <span className="block text-5xl lg:hidden">Leaderboard</span>
           </div>
-          <div className="h-[2px] w-[90%] bg-bgColor5"></div>
-          <div className="justify-between gap-10 lg:flex">
+          <div className="hidden h-[2px] w-[90%] bg-bgColor5 lg:block"></div>
+          <div className="flex w-full justify-center gap-4 py-10 lg:gap-10">
             {profiles.map(
               (profile, key) =>
                 key < 3 && (
@@ -158,7 +160,7 @@ export default function LeaderBoard() {
             )}
           </div>
         </div>
-        <div className="flex w-[100%] flex-col items-center gap-4 bg-bgColor8 py-6">
+        <div className="flex w-[100%] flex-col items-center gap-4 py-6">
           {profiles.map(
             (profile, key) =>
               key > 2 && (

@@ -18,12 +18,16 @@ const ProfileItem = ({
   customClasses,
 }: ProfileItemProps) => {
   return (
-    <div className="flex w-[80%] items-center justify-between rounded-lg bg-bgColor7 px-4 py-4 font-space text-lg">
-      <div className="md: flex items-center justify-center sm:gap-5 md:gap-10 lg:gap-20">
-        <div className="px-4">{ranking}</div>
-        <div className="flex items-center gap-4">
-          <img src={avatar} alt="avatar" className="h-auto w-[60px]" />
-          <div className="hidden sm:block">{name}</div>
+    <div className="sm:text-md flex w-full items-center justify-between rounded-lg bg-bgColor7 px-4 py-4 font-space text-sm sm:text-lg">
+      <div className="md: flex items-center justify-center sm:gap-2 md:gap-10 lg:gap-20">
+        <div className="px-2 sm:px-4">{ranking}</div>
+        <div className="flex items-center gap-2 sm:gap-4">
+          <img
+            src={avatar}
+            alt="avatar"
+            className="h-auto w-[40px] md:w-[45px] lg:w-[60px]"
+          />
+          <div className="">{name}</div>
         </div>
       </div>
       <div className="flex items-center gap-4">
