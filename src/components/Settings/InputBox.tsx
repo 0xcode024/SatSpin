@@ -3,10 +3,10 @@ interface InputBoxProps {
 }
 const InputBox = ({ name }: InputBoxProps) => {
   return (
-    <div className="flex flex-col gap-3">
-      <div className="text-tColor7">{name}</div>
+    <div className="flex flex-col gap-2">
+      <div className="lg:text-md text-xs text-tColor7 sm:text-sm">{name}</div>
       <div>
-        <input className="bg-bgColor10 w-[90%] rounded-md p-2.5"></input>
+        <input className="w-full rounded-md bg-bgColor10 p-2.5 lg:w-[90%]"></input>
       </div>
     </div>
   );

@@ -141,7 +141,7 @@ export default function LeaderBoard() {
         <div className="relative flex flex-col items-center gap-2 pb-8">
           <div className="mt-32 font-space font-bold text-tColor5">
             <span className="hidden text-3xl lg:block">LEADER BOARD</span>
-            <span className="block text-5xl lg:hidden">Leaderboard</span>
+            <span className="block text-4xl lg:hidden">Leaderboard</span>
           </div>
           <div className="hidden h-[2px] w-[90%] bg-bgColor5 lg:block"></div>
           <div className="flex w-full justify-center gap-4 py-10 lg:gap-10">

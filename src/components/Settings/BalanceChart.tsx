@@ -88,7 +88,7 @@ const chartConfig = {
 
 const BalanceChart = () => {
   return (
-    <Card placeholder="" className="bg-bgColor7">
+    <Card placeholder="" className="hidden bg-bgColor7 md:block">
       <CardHeader
         floated={false}
         shadow={false}
