@@ -1,12 +1,32 @@
 import playerInfoData from "@/static/playerInfos";
 import PlayerInfoItem from "./PlayerInfoItem";
 import vector_img from "@/assets/images/vector.png";
+import { title } from "process";
 
-const PlayerBar = () => {
+interface PlayerBarProps {
+  title: string;
+  customClasses: string;
+  width: string;
+  bar_height: string;
+}
+const PlayerBar = ({
+  customClasses,
+  title,
+  width,
+  bar_height,
+}: PlayerBarProps) => {
   return (
-    <div className="relative w-[300px] overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%]">
-      <div className="bg-bgColor8 py-7 text-center"> PLAYERS </div>
-      <div className="flex h-[560px] flex-col gap-2 overflow-auto bg-bgColor11">
+    <div
+      className={`relative overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%] ${customClasses}`}
+      style={{
+        width: `${width}`,
+      }}
+    >
+      <div className="bg-bgColor8 py-7 text-center"> {title} </div>
+      <div
+        className="flex  flex-col gap-2 overflow-auto bg-bgColor11"
+        style={{ height: `${bar_height}` }}
+      >
         {playerInfoData.map((data, key) => (
           <PlayerInfoItem
             id={data.id}

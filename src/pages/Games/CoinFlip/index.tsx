@@ -12,12 +12,12 @@ const CoinFlip = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className=" rounded-lg bg-gradient-to-b from-darkGray to-bg-dark pl-[50px] pt-[118px]">
-      <img src={coinflip_banner}></img>
+    <div className=" rounded-lg bg-gradient-to-b from-darkGray to-bg-dark pl-0 pt-[118px] lg:pl-[50px]">
+      <img className="hidden xl:block" src={coinflip_banner}></img>
       <div className="w-[100%] rounded-lg pl-[5%] pr-[7%]">
         <GameBoard />
         <GameLeaderboard title="COIN FLIP" />
-        <div className="py-16">
+        <div className="hidden py-16 xl:block">
           <div className="py-5 text-center text-3xl font-bold text-bgColor6">
             OTHER GAMES
           </div>

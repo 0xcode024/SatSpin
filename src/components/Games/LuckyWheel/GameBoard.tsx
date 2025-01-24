@@ -5,7 +5,12 @@ import PlayerBar from "../PlayerBar";
 const GameBoard = () => {
   return (
     <div className="relative mt-14 flex h-full justify-between  overflow-hidden rounded-lg font-space text-xl">
-      <PlayerBar />
+      <PlayerBar
+        title="PLAYERS"
+        customClasses=""
+        width="300px"
+        bar_height="560px"
+      />
       <GameSquare />
       <div className="flex w-[370px] flex-col bg-bgColor11">
         <div className="flex items-center justify-between bg-bgColor21 px-5 py-7 text-sm">

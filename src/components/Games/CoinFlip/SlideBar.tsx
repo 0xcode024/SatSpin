@@ -1,8 +1,8 @@
 const SlideBar = () => {
   return (
     <div className="bg-gray-100 flex">
-      <div>3x</div>
-      <div className="w-full max-w-xl px-4">
+      <div className="text-lg xl:text-sm 2xl:text-lg">3x</div>
+      <div className="w-full px-4">
         <input
           type="range"
           min="1"

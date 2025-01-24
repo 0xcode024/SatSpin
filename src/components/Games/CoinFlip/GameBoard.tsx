@@ -5,14 +5,15 @@ import GameHistoryItem from "./GameHistoryItem";
 import GameSquare from "./GameSquare";
 import PickSide from "./PickSide";
 import vector_img from "@/assets/images/vector.png";
+import PlayerBar from "../PlayerBar";
 const GameBoard = () => {
   return (
-    <div className="relative flex justify-between overflow-hidden rounded-lg  pt-14 font-space text-xl">
-      <div className="w-[30%] overflow-hidden rounded-tl-lg bg-bgColor8">
+    <div className="relative block justify-between overflow-hidden rounded-lg pt-14  font-space text-xl xl:flex">
+      <div className="hidden w-[310px] overflow-hidden rounded-tl-lg bg-bgColor8 xl:block">
         <PickSide />
       </div>
       <GameSquare />
-      <div className="relative w-[25%] overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%]">
+      <div className="relative hidden w-[260px] overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%] xl:block">
         <div className="bg-bgColor8 py-7 text-center"> GAME HISTORY</div>
         <div className="flex h-[560px] flex-col gap-2 overflow-auto bg-bgColor11 pr-3">
           {gameHistoryData.map((data, key) => (
@@ -27,6 +28,13 @@ const GameBoard = () => {
           <img src={vector_img}></img>
         </div>
       </div>
+      <PlayerBar
+        title="Leader Board"
+        customClasses="xl:hidden block"
+        width="full"
+        bar_height="250px"
+      />
+
       <GameBottomBar />
     </div>
   );

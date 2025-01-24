@@ -12,7 +12,13 @@ import WinGameRound from "./WinGameRound";
 const GameBoard = () => {
   return (
     <div className="relative mt-14 flex justify-between overflow-hidden  rounded-lg font-space text-xl">
-      <PlayerBar />
+      <PlayerBar
+        title="PLAYERS"
+        customClasses=""
+        width="300px"
+        bar_height="560px"
+      />
+
       <div className="w-[100%] bg-bgColor11 p-4">
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 2xl:grid-cols-3">
           <div className="hidden lg:block">

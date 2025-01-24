@@ -6,7 +6,7 @@ interface GameLeaderboardProps {
 }
 const GameLeaderboard = ({ title }: GameLeaderboardProps) => {
   return (
-    <div className="overflow-hidden rounded-lg font-space text-sm font-bold md:text-lg lg:text-xl">
+    <div className="hidden overflow-hidden rounded-lg font-space text-sm font-bold md:text-lg lg:text-xl xl:block">
       <div className="bg-bgColor21 py-8 text-center">
         {title} - LEADER BOARD
       </div>
