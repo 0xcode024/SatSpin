@@ -65,7 +65,7 @@ const Games = () => {
           }}
         />
         {gameInfoData.map((data, key) => (
-          <div className="w-full lg:hidden ">
+          <div key={key} className="w-full lg:hidden">
             <MobileGameCard
               title={data.title}
               image={data.mobile}

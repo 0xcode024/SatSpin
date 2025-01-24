@@ -24,6 +24,7 @@ const TxHistory = () => {
           <tbody>
             {txHistoryData.map((tx, key) => (
               <TxItem
+                key={key}
                 icon={tx.icon}
                 coinAmount={tx.coinAmount}
                 date={tx.date}

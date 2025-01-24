@@ -6,8 +6,8 @@ import TxHistory from "@/components/Settings/TxHistory";
 
 const Setting = () => {
   return (
-    <div className="bg-bg-dark pl-0 pt-[118px] font-space lg:pl-[50px]">
-      <div className="px-6 pb-[50px] pt-36 sm:px-12 md:pb-[400px] lg:px-24 2xl:pr-[150px]">
+    <div className="bg-bgColor3 pl-0 pt-[118px] font-space md:bg-bg-dark lg:pl-[50px]">
+      <div className="px-6 pb-[50px] pt-24 sm:px-12 md:pb-[400px] md:pt-36 lg:px-24 2xl:pr-[150px]">
         <div className="py-4 text-center text-3xl font-bold text-bgColor6 md:text-left">
           <span className="hidden md:block">PROFILE SETTINGS</span>
           <span className="block text-4xl text-bgColor16 md:hidden">
