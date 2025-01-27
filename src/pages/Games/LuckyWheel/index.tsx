@@ -38,8 +38,8 @@ const LuckyWheel = () => {
           </div>
         </div>
       </div>
-      <LogoFooter customClasses="bg-bg-dark hidden 2xl:block" />
-      <About customClasses="bg-bg-dark text-white hidden 2xl:block" />
+      <LogoFooter customClasses="bg-bg-dark hidden 2xl:flex" />
+      <About customClasses="bg-bg-dark text-white hidden 2xl:flex" />
     </div>
   );
 };
