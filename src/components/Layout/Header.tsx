@@ -78,7 +78,12 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             <div className="">Home</div>
           </div>
           <div className="w-full h-[1px] bg-borderColor1"></div>
-          <div onClick={() => { setToogleMenu(false); navigate("/") }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
+          <div onClick={() => {
+            setToogleMenu(false); navigate("/"); window.scrollTo({
+              top: 550,
+              behavior: "smooth",
+            });
+          }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
             <div className="">
               <img src={games} className="w-[30px]" />
             </div>

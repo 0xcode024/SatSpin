@@ -26,7 +26,10 @@ const SideBar = () => {
         customClasses="border-r-0 border-l-0 border-t-0 border-b-1 border-b-borderColor1 h-[142px] rounded-none"
         onClick={() => {
           navigate("/");
-          window.scrollTo(0, 550);
+          window.scrollTo({
+            top: 550,
+            behavior: "smooth",
+          });
         }}
       ></CustomIconButton>
       <CustomIconButton
