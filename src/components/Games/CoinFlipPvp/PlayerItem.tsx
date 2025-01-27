@@ -24,7 +24,7 @@ const PlayerItem = ({ image, balance, option, name }: PlayerItemProps) => {
           />
         </div>
       </div>
-      <div className="text-sm">{name}</div>
+      <div className="text-xs sm:text-sm">{name}</div>
       <div className="bg-bgColor40 flex items-center justify-center gap-3 rounded-lg px-2 py-1">
         <div className="">
           <img src={bitcoin} width="23px" />

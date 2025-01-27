@@ -4,12 +4,12 @@ const betData = [
   {
     amount: 0.02,
   },
-  // {
-  //   amount: 0.01,
-  // },
-  // {
-  //   amount: 0.4,
-  // },
+  {
+    amount: 0.01,
+  },
+  {
+    amount: 0.4,
+  },
   // {
   //   amount: 0.32,
   // },

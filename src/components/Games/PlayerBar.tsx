@@ -24,8 +24,8 @@ const PlayerBar = ({
     >
       <div className="bg-bgColor8 py-7 text-center"> {title} </div>
       <div
-        className="flex  flex-col gap-2 overflow-auto bg-bgColor11"
-        style={{ height: `${bar_height}` }}
+        className="flex  flex-col gap-2 overflow-auto bg-bgColor11 min-h-full h-[200px]"
+        // style={{ height: `${bar_height}` }}
       >
         {playerInfoData.map((data, key) => (
           <PlayerInfoItem

@@ -12,7 +12,7 @@ const GameSquare = () => {
   const ringSize = 80 * 0.8;
   const borderWidth = 80 * 0.1;
   return (
-    <div className="flex h-full flex-grow flex-col">
+    <div className="order-0 flex h-full flex-grow flex-col 2xl:order-1">
       <div
         className="relative flex h-[500px] items-center justify-center gap-2 pb-2"
         style={{
@@ -29,52 +29,21 @@ const GameSquare = () => {
           </div>
           <ButtonDefault
             label="HISTORY"
-            customClasses="text-sm text-tColor2 bg-bgColor31"
+            customClasses="text-sm text-tColor2 bg-bgColor31 hidden lg:block"
             onClick={() => {}}
           />
         </div>
         <div className="relative">
-          <div className="absolute left-[-40px] top-[-40px] flex h-[460px] w-[460px] items-center justify-center">
-            <svg
-              aria-hidden="true"
-              className="h-[480px] w-[480px] animate-spin"
-              viewBox="0 0 100 100"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                className="text-white"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              />
-              <circle
-                cx="50"
-                cy="50"
-                r="45"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeDasharray="283"
-                strokeDashoffset="75"
-                strokeLinecap="round"
-                className="text-[#5A5A5A]"
-              />
-            </svg>
-          </div>
-
-          <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-3">
+          {/* <div className="absolute left-0 top-0 flex h-full w-full items-center justify-center gap-3">
             <div className="text-3xl font-bold">0.07</div>
             <div>
               <img src={bitcoin} width="35x" />
             </div>
-          </div>
+          </div> */}
           <DonutChart />
         </div>
       </div>
-      <div className="overflow-x-auto bg-borderColor2 p-5">
+      <div className="hidden overflow-x-auto bg-borderColor2 p-4 pr-0 2xl:block">
         <div className="flex items-center gap-4 overflow-x-auto rounded-lg bg-bgColor29 p-3">
           {betData.map((data, key) => (
             <BetItem amount={data.amount} key={key} />

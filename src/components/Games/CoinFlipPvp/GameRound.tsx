@@ -20,9 +20,10 @@ const GameRound = () => {
           name="PLAYER NAME"
         />
       </div>
-      <div className="absolute left-1/2 top-1/2 flex h-24 w-24 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-bgColor41 bg-bg-dark text-5xl font-bold">
+      <div className="absolute left-1/2 top-1/2 flex h-16 w-16 sm:h-24 sm:w-24 -translate-x-1/2 -translate-y-1/2 transform items-center justify-center rounded-full border border-bgColor41 bg-bg-dark text-4xl sm:text-5xl font-bold">
         <div>2</div>
       </div>
+
     </div>
   );
 };

@@ -12,11 +12,11 @@ const CoinFlipPvp = () => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="rounded-lg bg-gradient-to-b from-darkGray to-bg-dark pl-0 pt-[118px] lg:pl-[50px]">
-      <img src={coinflip_pvp_banner}></img>
-      <div className="w-[100%] rounded-lg pl-[5%] pr-[7%]">
+    <div className="rounded-lg 2xl:bg-gradient-to-b from-darkGray to-bg-dark pl-0 pt-[118px] lg:pl-[50px]  bg-black">
+      <img className="hidden xl:block" src={coinflip_pvp_banner}></img>
+      <div className="w-[100%] rounded-lg 2xl:pl-[5%] 2xl:pr-[7%] px-0">
         <GameBoard />
-        <div className="py-16">
+        <div className="hidden py-16 2xl:block">
           <div className="py-5 text-center text-3xl font-bold text-bgColor6">
             OTHER GAMES
           </div>
@@ -37,8 +37,8 @@ const CoinFlipPvp = () => {
           </div>
         </div>
       </div>
-      <LogoFooter customClasses="bg-bg-dark" />
-      <About customClasses="bg-bg-dark text-white" />
+      <LogoFooter customClasses="bg-bg-dark hidden 2xl:block" />
+      <About customClasses="bg-bg-dark text-white hidden 2xl:block" />
     </div>
   );
 };

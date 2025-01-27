@@ -2,17 +2,20 @@ import bitcoin from "@/assets/images/coins/bitcoin.png";
 import ButtonDefault from "@/components/Buttons/ButtonDefault";
 import GameSquare from "./GameSquare";
 import PlayerBar from "../PlayerBar";
+import betData from "@/static/betdata";
+import BetItem from "./BetItem";
+import MobileStatusCard from "@/components/Mobile/MobileStatusCard";
 const GameBoard = () => {
   return (
-    <div className="relative mt-14 flex h-full justify-between  overflow-hidden rounded-lg font-space text-xl">
+    <div className="relative mt-14 flex h-full flex-col justify-between gap-4 overflow-hidden rounded-lg font-space text-xl 2xl:flex-row 2xl:gap-0">
       <PlayerBar
         title="PLAYERS"
-        customClasses=""
-        width="300px"
-        bar_height="560px"
+        customClasses="2xl:order-0 order-1"
+        width="w-full"
+        bar_height="200px"
       />
       <GameSquare />
-      <div className="flex w-[370px] flex-col bg-bgColor11">
+      <div className=" order-2 hidden w-[370px] flex-col bg-bgColor11 2xl:flex">
         <div className="flex items-center justify-between bg-bgColor21 px-5 py-7 text-sm">
           <div className="text-tColor2">Round No: 5554</div>
           <div className="rounded-lg border border-bgColor24 bg-bgColor25 bg-red-300 p-2 text-bgColor24">
@@ -72,6 +75,15 @@ const GameBoard = () => {
           />
         </div>
       </div>
+      <div className="order-3 block overflow-hidden rounded-lg border border-bgColor44 bg-borderColor2 2xl:hidden">
+        <div className="bg-darkButton py-4 pl-3">Round Contents</div>
+        <div className="flex items-center gap-4 bg-bgColor28 p-3">
+          {betData.map((data, key) => (
+            <BetItem amount={data.amount} key={key} />
+          ))}
+        </div>
+      </div>
+      <MobileStatusCard />
     </div>
   );
 };

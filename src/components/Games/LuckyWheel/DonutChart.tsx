@@ -54,7 +54,38 @@ const DonutChart: React.FC = () => {
   };
 
   return (
-    <div className="relative h-[380px] w-[380px]">
+    <div className="flex h-[350px] w-[350px] justify-center pt-[60px] sm:h-[380px] sm:w-[380px]">
+      <div className="absolute left-[-10px] top-[18px] flex h-[460px] w-[460px] sm:left-[-10px] sm:top-[18px]">
+        {/* animate-spin */}
+        <svg
+          aria-hidden="true"
+          className="h-[370px] w-[370px] animate-spin sm:h-[400px] sm:w-[400px]"
+          viewBox="0 0 100 100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            className="text-white"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          />
+          <circle
+            cx="50"
+            cy="50"
+            r="45"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeDasharray="283"
+            strokeDashoffset="75"
+            strokeLinecap="round"
+            className="text-[#5A5A5A]"
+          />
+        </svg>
+      </div>
       <Doughnut data={data} options={options} />
     </div>
   );
