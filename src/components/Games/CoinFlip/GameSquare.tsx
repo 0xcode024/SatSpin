@@ -11,6 +11,7 @@ const GameSquare = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "blend", // or another blend mode
+        backgroundColor: "rgba(0, 0, 0, 0.25)"
       }}
     >
       <div className="absolute top-14 flex w-full flex-col items-center justify-center gap-2 px-[20px] lg:flex-row 2xl:justify-between">
@@ -23,7 +24,7 @@ const GameSquare = () => {
         </div>
       </div>
 
-      <div className="px-12 pb-12 pt-28">
+      <div className="px-12 pb-12 pt-28 xl:pt-0">
         <img src={sat_icon} />
       </div>
     </div>

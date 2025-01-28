@@ -1,3 +1,5 @@
+import { useRef } from "react";
+
 import gameHistoryData from "@/static/gameHistory";
 import CoinflipLeaderboard from "../GameLeaderBoard";
 import GameBottomBar from "./GameBottomBar";
@@ -7,6 +9,16 @@ import PickSide from "./PickSide";
 import vector_img from "@/assets/images/vector.png";
 import PlayerBar from "../PlayerBar";
 const GameBoard = () => {
+  const gameHistoryContainerRef = useRef<HTMLDivElement | null>(null);
+  const handleScroll = () => {
+    if (gameHistoryContainerRef.current) {
+      console.log(gameHistoryContainerRef.current.scrollBy({
+        top: 50,
+        behavior: "smooth"
+      }));
+
+    }
+  };
   return (
     <div className="relative block justify-between overflow-hidden rounded-lg pt-14  font-space text-xl xl:flex">
       <div className="hidden w-[310px] overflow-hidden rounded-tl-lg bg-bgColor8 xl:block">
@@ -15,7 +27,8 @@ const GameBoard = () => {
       <GameSquare />
       <div className="relative hidden w-[260px] overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%] xl:block">
         <div className="bg-bgColor8 py-7 text-center"> GAME HISTORY</div>
-        <div className="flex h-[560px] flex-col gap-2 overflow-auto bg-bgColor11 pr-3">
+        <div ref={gameHistoryContainerRef}
+          className="flex h-[560px] flex-col gap-2 overflow-auto bg-bgColor11 pr-3">
           {gameHistoryData.map((data, key) => (
             <GameHistoryItem
               status={data.status}
@@ -24,7 +37,7 @@ const GameBoard = () => {
             />
           ))}
         </div>
-        <div className="absolute bottom-0 flex h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent">
+        <div onClick={() => handleScroll()} className="absolute bottom-0 flex h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent">
           <img src={vector_img}></img>
         </div>
       </div>

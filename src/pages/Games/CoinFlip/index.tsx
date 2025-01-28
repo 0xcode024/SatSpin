@@ -13,7 +13,7 @@ const CoinFlip = () => {
   }, []);
   return (
     <div className=" rounded-lg bg-gradient-to-b from-darkGray to-bg-dark pl-0 pt-[118px] lg:pl-[50px]">
-      <img className="hidden xl:block" src={coinflip_banner}></img>
+      <img className="hidden xl:block" src={coinflip_banner} />
       <div className="w-[100%] rounded-lg pl-[5%] pr-[7%]">
         <GameBoard />
         <GameLeaderboard title="COIN FLIP" />

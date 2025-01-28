@@ -16,7 +16,7 @@ const GameInfoCard = ({
   const navigate = useNavigate();
   return (
     <div
-      className="flex h-[400px] w-full flex-col items-end justify-end rounded-xl bg-cover bg-center font-space transition-all duration-1000 ease-in-out hover:brightness-125"
+      className="flex h-[400px] w-full flex-col items-end justify-end rounded-xl bg-cover bg-center font-space transition-all duration-500 ease-in-out hover:brightness-150"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",

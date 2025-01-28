@@ -4,7 +4,7 @@ import usd_coin from "@/assets/images/game_icons/usd_icon.png";
 const GameBottomBar = () => {
   return (
     <div className=" align-center static bottom-0 mt-2 flex w-full flex-col justify-between bg-bgColor28 px-8 py-10 text-sm md:text-lg xl:absolute xl:m-0 xl:w-[calc(100%-260px)] xl:flex-row xl:bg-black xl:px-6 xl:py-4 xl:text-sm 2xl:text-lg">
-      <div className="w-full xl:w-[160px] 2xl:w-[200px]">
+      <div className="w-full xl:w-[160px] 2xl:w-[232px]">
         <div className="text-bgColor27 xl:text-white">AUTO BET AMOUNT</div>
         <div className="w-full flex-grow py-4">
           <SlideBar />

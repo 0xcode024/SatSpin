@@ -20,7 +20,7 @@ interface HeaderProps {
 
 const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   const navigate = useNavigate();
-  const [toggleMenu, setToogleMenu] = useState(true);
+  const [toggleMenu, setToogleMenu] = useState(false);
   return (
     <div className="fixed left-0 right-0 top-0 z-20 border-b border-b-borderColor1  bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-2 pb-7 pt-14 sm:px-4 md:px-8 lg:px-12 lg:py-7">

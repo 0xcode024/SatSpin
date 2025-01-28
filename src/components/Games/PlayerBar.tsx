@@ -2,6 +2,7 @@ import playerInfoData from "@/static/playerInfos";
 import PlayerInfoItem from "./PlayerInfoItem";
 import vector_img from "@/assets/images/vector.png";
 import { title } from "process";
+import { useRef } from "react";
 
 interface PlayerBarProps {
   title: string;
@@ -15,6 +16,16 @@ const PlayerBar = ({
   width,
   bar_height,
 }: PlayerBarProps) => {
+  const gameHistoryContainerRef = useRef<HTMLDivElement | null>(null);
+  const handleScroll = () => {
+    if (gameHistoryContainerRef.current) {
+      console.log(gameHistoryContainerRef.current.scrollBy({
+        top: 50,
+        behavior: "smooth"
+      }));
+    }
+  };
+
   return (
     <div
       className={`relative overflow-hidden rounded-tr-lg bg-bgColor9 bg-opacity-[40%] ${customClasses}`}
@@ -25,7 +36,7 @@ const PlayerBar = ({
       <div className="bg-bgColor8 py-7 text-center"> {title} </div>
       <div
         className="flex  flex-col gap-2 overflow-auto bg-bgColor11 min-h-full h-[200px]"
-        // style={{ height: `${bar_height}` }}
+        ref={gameHistoryContainerRef}
       >
         {playerInfoData.map((data, key) => (
           <PlayerInfoItem
@@ -39,10 +50,10 @@ const PlayerBar = ({
           />
         ))}
       </div>
-      <div className="absolute bottom-0 flex h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent">
+      <div onClick={handleScroll} className="absolute bottom-0 flex h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent">
         <img src={vector_img}></img>
       </div>
-    </div>
+    </div >
   );
 };
 
