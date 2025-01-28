@@ -3,7 +3,7 @@ interface ProfilelWalletInfoProps {
 }
 const ProfilelWalletInfo = ({ balance }: ProfilelWalletInfoProps) => {
   return (
-    <div className="flex w-full flex-col justify-between gap-4 overflow-hidden rounded-xl bg-bg-dark md:flex-row md:gap-0 lg:rounded-3xl">
+    <div className="flex w-full flex-col justify-between gap-4 overflow-hidden rounded-xl bg-bgColor3 md:bg-bgColor7 md:flex-row md:gap-0 lg:rounded-3xl ">
       <div className="w-full rounded-xl bg-bgColor7 md:w-[45%] md:rounded-none">
         <div className="px-7 pt-3 text-xl">Wallet Balance</div>
         <div className="py-5">
@@ -12,9 +12,9 @@ const ProfilelWalletInfo = ({ balance }: ProfilelWalletInfoProps) => {
           </div>
         </div>
       </div>
-      <div className="py-5md:w-[55%] w-full rounded-xl bg-bgColor11 bg-bgColor7 md:rounded-none">
+      <div className="py-5 md:w-[55%] w-full rounded-xl bg-bgColor7 md:bg-bgColor11 pl-4 overflow-hidden ">
         <div className="px-7 pt-3 text-xl">Tokens</div>
-        <div className="flex flex-col gap-4 px-3 py-9 pr-5">
+        <div className="flex flex-col gap-4 px-l py-9 pr-5">
           <div className="h-[50px] w-full rounded-md bg-bgColor10 lg:rounded-lg">
             <input className="w-full rounded-md bg-bgColor10 p-2.5"></input>
           </div>

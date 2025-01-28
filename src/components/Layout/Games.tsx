@@ -10,8 +10,8 @@ const Games = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="justify-center bg-bgColor8 px-[30px] pb-[30px] pt-[105px] font-space md:pb-[65px] md:pt-[195px] lg:bg-bgColor2 xl:flex">
-      <div className="w-full xl:w-[34%]">
+    <div className="justify-center bg-bgColor8 px-[30px] pb-[30px] pt-[105px] font-space md:pb-[65px] md:pt-[195px] lg:bg-bgColor2 2xl:flex">
+      <div className="w-full 2xl:w-[34%]">
         <div className="flex items-center justify-center gap-4">
           <div>
             <img src={games} alt="Games" width="30px"></img>
@@ -36,7 +36,7 @@ const Games = () => {
           </div>
         </div>
       </div>
-      <div className="flex w-full flex-col items-center justify-center gap-10 px-[8%] lg:flex-row lg:justify-between lg:px-0 xl:w-[60%]">
+      <div className="flex w-full flex-col items-center justify-evenly gap-8 px-[10px] lg:flex-row lg:justify-between lg:px-0 2xl:w-[60%]">
         <GameCard
           title="COIN FLIP"
           image={coin_flip}
