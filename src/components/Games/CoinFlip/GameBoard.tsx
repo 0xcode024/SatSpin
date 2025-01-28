@@ -16,7 +16,6 @@ const GameBoard = () => {
         top: 50,
         behavior: "smooth"
       }));
-
     }
   };
   return (
@@ -37,7 +36,7 @@ const GameBoard = () => {
             />
           ))}
         </div>
-        <div onClick={() => handleScroll()} className="absolute bottom-0 flex h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent">
+        <div onClick={() => handleScroll()} className="hidden absolute bottom-0 md:flex h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent">
           <img src={vector_img}></img>
         </div>
       </div>

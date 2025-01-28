@@ -24,7 +24,7 @@ const GameBoard = () => {
         </div>
         <div className="m-3 h-[55%] bg-bgColor26 px-3 py-10">
           <div className="h-[1px] w-full bg-bgColor27" />
-          <div className="flex justify-start gap-16 py-4">
+          <div className="flex justify-start justify-start gap-16 py-4">
             <div className="">
               <div className="flex items-center gap-2">
                 <div>
@@ -40,8 +40,8 @@ const GameBoard = () => {
             </div>
           </div>
           <div className="h-[1px] w-full bg-bgColor27"></div>
-          <div className="flex py-4 pr-11">
-            <div className="w-full">
+          <div className="flex py-4 pr-11 justify-start gap-16">
+            <div className="">
               <div className="flex items-center gap-2">
                 <div>
                   <img src={bitcoin} />
@@ -71,7 +71,7 @@ const GameBoard = () => {
           <ButtonDefault
             label="connect"
             customClasses="border-0 bg-bgColor28"
-            onClick={() => {}}
+            onClick={() => { }}
           />
         </div>
       </div>

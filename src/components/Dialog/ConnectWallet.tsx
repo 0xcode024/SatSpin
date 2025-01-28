@@ -10,8 +10,8 @@ interface ConnectWalletDialogProps {
 const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
   return (
     <div className="fixed inset-0 z-50 flex w-screen items-center justify-center overflow-y-auto bg-bg-dark bg-opacity-70 shadow-lg backdrop-blur-xl">
-      <div className="relative flex w-[400px] flex-col items-center gap-8 font-space">
-        <div className="w-full pb-12 text-left text-3xl">
+      <div className="relative flex w-[300px] lg:w-[400px] flex-col items-center gap-8 font-space">
+        <div className="w-full pb-12 text-left text-2xl lg:text-3xl">
           Log in With Wallet
         </div>
         <div className="flex w-[100%] flex-col items-center gap-5">
@@ -31,14 +31,14 @@ const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
           <ButtonDefault
             label="Connect"
             onClick={() => onClose()}
-            customClasses="w-full bg-bgColor5 text-black font-space text-lg font-bold"
-          ></ButtonDefault>
+            customClasses="w-full bg-bgColor5 text-black font-space text-sm lg:text-lg font-bold"
+          />
         </div>
         <div
           className="absolute right-2 top-2 cursor-pointer"
           onClick={() => onClose()}
         >
-          <img src={esc}></img>
+          <img src={esc} className="w-[20px] lg:w-[25px]"></img>
         </div>
       </div>
     </div>

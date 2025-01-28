@@ -11,18 +11,10 @@ interface FundDialogProps {
 const FundsDialog = ({ onClose, open }: FundDialogProps) => {
   const [toogle, setToogle] = useState(false);
   return (
-    // <div
-    //   className="relative"
-    //   //   className="relative z-10"
-    //   //   aria-labelledby="modal-title"
-    //   //   role="dialog"
-    //   //   aria-modal="true"
-    // >
-    // <Dialog open={open} handler={onClose}>
     <div className="fixed inset-0 z-50 flex w-screen items-center justify-center overflow-y-auto bg-black bg-opacity-40">
-      <div className="bg-bgColor9 opactiy-100 relative flex flex-col gap-5 rounded-lg px-[5%] pb-[20px] pt-[50px] text-white lg:flex-row lg:justify-around lg:gap-[70px] lg:pb-[70px]">
+      <div className="items-center lg:items-stretch bg-bgColor9 opactiy-100 relative flex flex-col gap-5 rounded-lg px-[5%] pb-[20px] pt-[50px] text-white lg:flex-row lg:justify-center lg:gap-[70px] lg:pb-[70px]">
         <div className="flex flex-col gap-2 lg:gap-16">
-          <div className="items-around flex gap-5 font-space text-3xl">
+          <div className="items-around flex gap-5 font-space text-2xl lg:text-3xl">
             <div
               className={`cursor-pointer ${toogle ? "text-grayFont" : "font-bold text-bgColor5 brightness-150 drop-shadow-[0_0_10px_#fff]"}`}
               onClick={() => setToogle(false)}
@@ -47,7 +39,7 @@ const FundsDialog = ({ onClose, open }: FundDialogProps) => {
                 name={depositCoin.name}
                 symbol={depositCoin.symbol}
                 image={depositCoin.image}
-              ></FundDialogItem>
+              />
             ))}
           </div>
         </div>
@@ -66,9 +58,6 @@ const FundsDialog = ({ onClose, open }: FundDialogProps) => {
         </div>
       </div>
     </div>
-    // </Dialog>
-
-    // </div>
   );
 };
 

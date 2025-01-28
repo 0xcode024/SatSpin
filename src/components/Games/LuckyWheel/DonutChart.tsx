@@ -56,7 +56,6 @@ const DonutChart: React.FC = () => {
   return (
     <div className="flex h-[350px] w-[350px] justify-center pt-[60px] sm:h-[380px] sm:w-[380px]">
       <div className="absolute left-[-10px] top-[18px] flex h-[460px] w-[460px] sm:left-[-10px] sm:top-[18px]">
-        {/* animate-spin */}
         <svg
           aria-hidden="true"
           className="h-[370px] w-[370px] animate-spin sm:h-[400px] sm:w-[400px]"
