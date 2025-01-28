@@ -17,7 +17,10 @@ const SideBar = () => {
         customClasses="border-r-0 border-l-0 border-t-1 border-b-1 border-t-borderColor1 border-b-borderColor1 h-[142px] rounded-none"
         onClick={() => {
           navigate("/");
-          window.scrollTo(0, 0);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         }}
       ></CustomIconButton>
       <CustomIconButton
@@ -38,7 +41,10 @@ const SideBar = () => {
         customClasses="border-r-0 border-l-0 border-t-0 border-b-1 border-b-borderColor1 h-[142px] rounded-none"
         onClick={() => {
           navigate("/leaderboard");
-          window.scrollTo(0, 0);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         }}
       ></CustomIconButton>
       <CustomIconButton
@@ -47,7 +53,10 @@ const SideBar = () => {
         customClasses="border-r-0 border-l-0 border-t-0 border-b-1 border-b-borderColor1 h-[142px] rounded-none"
         onClick={() => {
           navigate("/setting");
-          window.scrollTo(0, 0);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         }}
       ></CustomIconButton>
     </div>

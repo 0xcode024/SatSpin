@@ -27,7 +27,7 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
         <div className="flex flex-row gap-4">
           <div
             className="hidden cursor-pointer items-center justify-start gap-2 lg:flex"
-            onClick={() => navigate("/")}
+            onClick={() => { navigate("/"); window.scrollTo(0, 0) }}
           >
             <img src={logo} width={175} />
           </div>
@@ -71,7 +71,12 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             <img src={x} className="w-[25px]  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]" />
           </div>
           <div className="w-full h-[1px] bg-borderColor1" />
-          <div onClick={() => { setToogleMenu(false); navigate("/") }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
+          <div onClick={() => {
+            setToogleMenu(false); navigate("/"); window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
             <div className="">
               <img src={home} className="w-[30px]" />
             </div>
@@ -90,14 +95,24 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             <div className="">Games</div>
           </div>
           <div className="w-full h-[1px] bg-borderColor1"></div>
-          <div onClick={() => { setToogleMenu(false); navigate("/leaderboard") }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
+          <div onClick={() => {
+            setToogleMenu(false); navigate("/leaderboard"); window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
             <div className="">
               <img src={history} className="w-[30px]" />
             </div>
             <div className="">Leaderboard</div>
           </div>
           <div className="w-full h-[1px] bg-borderColor1"></div>
-          <div onClick={() => { setToogleMenu(false); navigate("/setting") }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
+          <div onClick={() => {
+            setToogleMenu(false); navigate("/setting"); window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            });
+          }} className="cursor-pointer flex gap-8 items-center py-1 sm:py-4 px-2  transition-all duration-300 ease-in-out hover:brightness-150 hover:drop-shadow-[0_0_10px_#fff]">
             <div className="">
               <img src={settings} className="w-[30px]" />
             </div>
