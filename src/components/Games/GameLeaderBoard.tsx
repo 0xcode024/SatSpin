@@ -16,7 +16,7 @@ const GameLeaderboard = ({ title }: GameLeaderboardProps) => {
         <div className="absolute top-0 flex h-[60px] w-full cursor-pointer items-center justify-center bg-gradient-to-b from-darkGray to-transparent" />
         <div className="overflow-auto h-[600px]">
           {rankData.map((data, key) => (
-            <div className="">
+            <div key={key}>
               <LeaderBoardcard
                 image={data.image}
                 ranking={data.ranking}
@@ -25,7 +25,6 @@ const GameLeaderboard = ({ title }: GameLeaderboardProps) => {
                 streak={data.streak}
                 status={data.status}
                 color={data.color}
-                key={key}
               />
             </div>
           ))}

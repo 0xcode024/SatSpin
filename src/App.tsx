@@ -1,20 +1,23 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
+import { LaserEyesProvider, MAINNET } from '@omnisat/lasereyes';
 import routes from "@/routes";
 
 import "@/styles/index.scss";
 import "swiper/css";
 import { Toaster } from "sonner";
-import { AuthProvider } from "./context/AuthContext";
+import AuthContextProvider from "./context/AuthContext";
 
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <AuthProvider>
+      <LaserEyesProvider config={{ network: MAINNET }}>
+      <AuthContextProvider>
         <RouterProvider router={routes} />
         <Toaster position="top-right" expand={false} />
-      </AuthProvider>
+      </AuthContextProvider>
+      </LaserEyesProvider>
     </ThemeProvider>
   );
 };

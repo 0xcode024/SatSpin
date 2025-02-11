@@ -2,8 +2,6 @@ import { Suspense, useState } from "react";
 import { Outlet } from "react-router-dom";
 import PageLoading from "@/components/Loading/PageLoading";
 import Header from "@/components/Layout/Header";
-import { InscriptionsProvider } from "@/context/InscriptionsContext";
-import { SatAddressProvider } from "@/context/SatAddressContext";
 import SideBar from "@/components/Layout/SideBar";
 import FundsDialog from "@/components/Dialog/FundsDialog";
 import ConnectWalletDialog from "@/components/Dialog/ConnectWallet";
@@ -14,12 +12,10 @@ export default function Layout() {
 
   return (
     <div className="text-white">
-      <InscriptionsProvider>
-        <SatAddressProvider>
           <Suspense fallback={<PageLoading />}>
             <Header
               onDeposit={() => setShow(true)}
-              onConnect={() => setConnectWallet(true)}
+              onConnect={(option: boolean) => setConnectWallet(option)}
             />
             <SideBar />
             <Outlet />
@@ -31,8 +27,6 @@ export default function Layout() {
               />
             )}
           </Suspense>
-        </SatAddressProvider>
-      </InscriptionsProvider>
     </div>
   );
 }

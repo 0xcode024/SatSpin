@@ -6,21 +6,32 @@ import CustomIconButton from "../Buttons/IconButton";
 import sound from "@/assets/icons/sound.png";
 import go from "@/assets/icons/go.png";
 import menu_icon from "@/assets/mobile/menu.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import home from "@/assets/icons/SideBar/home.png";
 import games from "@/assets/icons/SideBar/games.png";
 import history from "@/assets/icons/SideBar/history.png";
 import settings from "@/assets/icons/SideBar/settings.png";
 import x from "@/assets/images/X.png";
+import { AuthContext } from "@/context/AuthContext";
+import { shortenAddress } from "@/utils/bitcoin.utils";
+import { WalletProviderConfig } from "../Dialog/ConnectWallet";
+import { useLaserEyes } from "@omnisat/lasereyes";
 
 interface HeaderProps {
   onDeposit: () => void;
-  onConnect: () => void;
+  onConnect: (option: boolean) => void;
 }
 
 const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   const navigate = useNavigate();
   const [toggleMenu, setToogleMenu] = useState(false);
+  const { wallet: myWalletInfo, loginWithWallet, logout } = useContext(AuthContext);
+  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider } =
+    useLaserEyes();
+  const signOut = async () => {
+    disconnect();
+    logout();
+  };
   return (
     <div className="fixed left-0 right-0 top-0 z-20 border-b border-b-borderColor1  bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-2 pb-7 pt-14 sm:px-4 md:px-8 lg:px-12 lg:py-7">
@@ -44,23 +55,30 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
           />
         </div>
         <div className="flex gap-4">
-          <ButtonDefault
+          { !myWalletInfo ? <ButtonDefault
             label="Connect"
             customClasses="bg-bitcoin-orange px-8 sm:px-12 lg:px-16 border-0 font-space sm:text-sm text-xs text-black"
-            onClick={() => onConnect()}
-          />
+            onClick={() => onConnect(true)}
+          /> : <div className="inline-flex px-5 py-2 items-center justify-center gap-6 rounded-lg border text-center font-medium hover:bg-opacity-90 transition-all duration-300 ease-in-out hover:brightness-125 hover:drop-shadow-[0_0_3px_#fff] bg-bitcoin-orange sm:px-12 lg:px-8 border-0 font-space sm:text-sm text-xs text-black"
+            onClick={() => {
+              signOut();
+            }}
+          >
+            <img src={WalletProviderConfig[myWalletInfo.wallet]?.logo} width="24px"></img>
+            <div>{shortenAddress(myWalletInfo.paymentAddress)}</div>
+          </div>}
           <CustomIconButton
             icon={go}
             size={20}
             customClasses="hidden lg:block"
             onClick={() => { }}
-          ></CustomIconButton>
+          />
           <CustomIconButton
             icon={sound}
             size={20}
             customClasses="hidden lg:block"
             onClick={() => { }}
-          ></CustomIconButton>
+          />
         </div>
       </div>
       {toggleMenu && (
@@ -118,7 +136,6 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             </div>
             <div className="">Settings</div>
           </div>
-          {/* <div className="w-full h-[1px] bg-borderColor1"></div> */}
         </div>
 
       )}

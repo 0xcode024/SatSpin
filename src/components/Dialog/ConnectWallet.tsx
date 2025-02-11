@@ -2,12 +2,94 @@ import esc from "@/assets/images/esc.png";
 import WalletItem from "../Items/WalletItem";
 import { wallets } from "@/static/wallets";
 import ButtonDefault from "../Buttons/ButtonDefault";
+import { toast } from 'sonner';
+import { LEATHER, MAGIC_EDEN, OKX, OYL, UNISAT, WIZZ, XVERSE, PHANTOM, useLaserEyes } from '@omnisat/lasereyes';
+import { AuthContext } from '@/context/AuthContext';
+import { useContext, useEffect } from "react";
+import { SUPPORTED_WALLETS } from "@/context/AuthContext/auth.types";
+import {
+  MAGIC_EDEN as magicEdenLogo,
+  OKX as okxLogo,
+  OYL as oylLogo,
+  UNISAT as unisatLogo,
+  WIZZ as wizzLogo,
+  XVERSE as xVerseLogo,
+  LEATHER as leatherLogo,
+  PHANTOM as phantomLogo
+} from '@/constants/imgs';
+import { delay } from "@/utils/utils";
+
+export const WalletProviderConfig: {
+  [key in SUPPORTED_WALLETS]: {
+    logo: any;
+  };
+} = {
+  [XVERSE]: { logo: xVerseLogo },
+  [LEATHER]: { logo: leatherLogo },
+  [PHANTOM]: { logo: phantomLogo },
+  [OKX]: { logo: okxLogo },
+  [UNISAT]: { logo: unisatLogo },
+};
 
 interface ConnectWalletDialogProps {
   open: boolean;
   onClose: () => void;
 }
 const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
+  const { wallet: myWalletInfo, loginWithWallet, logout } = useContext(AuthContext);
+  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider } = useLaserEyes();
+
+  useEffect(() => {
+    const signInFirebase = async () => {
+      if (connected) {
+        const myConnect = async (wallet: SUPPORTED_WALLETS) => {
+          return loginWithWallet({
+            ordinalsAddress: address,
+            ordinalsPublicKey: publicKey,
+            paymentAddress,
+            paymentPublicKey,
+            wallet
+          });
+        };
+        try {
+          await myConnect(provider);
+        } catch (error: any) {
+          console.log("Catch: ", error.message);
+          // toast.error(error.message, duration);
+          disconnect();
+        }
+      }
+    };
+    signInFirebase();
+  }, [connected]);
+
+  const handleConnectWallet = async (key: string) => {
+    try {
+      // if (isMobile) {
+      //   handleOpenDialog();
+      // }
+      if(key == "okx") {
+        if (typeof window !== "undefined" && (window as any).okxwallet) {
+          console.log("OKX Wallet is installed");
+        } else {
+            console.log("OKX Wallet is not installed");
+            toast.error("Error: OKX Wallet is not installed", {
+              duration: 1000
+            });
+            return;
+        }
+      }
+
+      await connect(key as SUPPORTED_WALLETS);
+      await delay(300);
+      onClose();
+    } catch (error) {
+      toast.error(`${error}`, {
+        duration: 1000
+      });
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-50 flex w-screen items-center justify-center overflow-y-auto bg-bg-dark bg-opacity-70 shadow-lg backdrop-blur-xl">
       <div className="relative flex w-[300px] lg:w-[400px] flex-col items-center gap-8 font-space">
@@ -15,9 +97,11 @@ const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
           Log in With Wallet
         </div>
         <div className="flex w-[100%] flex-col items-center gap-5">
-          {wallets.map((wallet, key) => (
-            <WalletItem name={wallet.name} image={wallet.image} />
-          ))}
+          {
+            Object.entries(WalletProviderConfig).map( ([key, value], index) => (
+            <WalletItem name={key} image={value.logo} key={key} onClick={()=>{handleConnectWallet(key);}}/>
+            ))
+          }
         </div>
         <div className="bg-bgColor12 h-[1px] w-full"></div>
         <div className="px-2 py-2 text-center text-sm">

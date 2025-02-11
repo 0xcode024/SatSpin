@@ -36,3 +36,5 @@ export function getFormattedTime(input: string) {
 
   return `${hours}:${minutes} ${ampm}`;
 }
+
+export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
