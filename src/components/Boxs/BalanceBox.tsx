@@ -3,7 +3,7 @@ import bitcoin from "@/assets/icons/bitcoin.png";
 
 // Define the types for the component's props
 interface BalanceBoxProps {
-  balance: number; // balance is of type number
+  balance: string; // balance is of type number
 }
 
 const BalanceBox: React.FC<BalanceBoxProps> = ({ balance }) => {

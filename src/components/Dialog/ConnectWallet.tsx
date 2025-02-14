@@ -3,7 +3,7 @@ import WalletItem from "../Items/WalletItem";
 import { wallets } from "@/static/wallets";
 import ButtonDefault from "../Buttons/ButtonDefault";
 import { toast } from 'sonner';
-import { LEATHER, MAGIC_EDEN, OKX, OYL, UNISAT, WIZZ, XVERSE, PHANTOM, useLaserEyes } from '@omnisat/lasereyes';
+import { LEATHER, MAGIC_EDEN, OKX, OYL, UNISAT, WIZZ, XVERSE, PHANTOM, useLaserEyes, NetworkType } from '@omnisat/lasereyes';
 import { AuthContext } from '@/context/AuthContext';
 import { useContext, useEffect } from "react";
 import { SUPPORTED_WALLETS } from "@/context/AuthContext/auth.types";
@@ -37,11 +37,13 @@ interface ConnectWalletDialogProps {
 }
 const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
   const { wallet: myWalletInfo, loginWithWallet, logout } = useContext(AuthContext);
-  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider } = useLaserEyes();
+  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider, network, getNetwork, switchNetwork } = useLaserEyes();
 
   useEffect(() => {
     const signInFirebase = async () => {
       if (connected) {
+        console.log("paymentAddress, paymentPublicKey, address, publicKey");
+        console.log(paymentAddress, paymentPublicKey, address, publicKey);
         const myConnect = async (wallet: SUPPORTED_WALLETS) => {
           return loginWithWallet({
             ordinalsAddress: address,
@@ -53,6 +55,7 @@ const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
         };
         try {
           await myConnect(provider);
+          await getNetwork();
         } catch (error: any) {
           console.log("Catch: ", error.message);
           // toast.error(error.message, duration);
@@ -79,7 +82,6 @@ const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
             return;
         }
       }
-
       await connect(key as SUPPORTED_WALLETS);
       await delay(300);
       onClose();

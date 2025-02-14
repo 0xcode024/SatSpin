@@ -15,13 +15,13 @@ const AuthContextProvider = ({ children }: { children: NonNullable<ReactNode> })
   const [feeRateData, setFeeRateData] = useState<any[]>([]);
 
   const loginWithWallet = (wallet: IWallet) => {
-    localStorage.setItem(WALLET_COOKIE, JSON.stringify(wallet));
+    // localStorage.setItem(WALLET_COOKIE, JSON.stringify(wallet));
     setWallet(wallet);
   };
 
   const logout = () => {
     // auth.signOut().then(() => {
-      localStorage.removeItem(WALLET_COOKIE);
+      // localStorage.removeItem(WALLET_COOKIE);
       setWallet(null);
     //   signOut({ redirect: false });
     // });

@@ -6,7 +6,7 @@ import CustomIconButton from "../Buttons/IconButton";
 import sound from "@/assets/icons/sound.png";
 import go from "@/assets/icons/go.png";
 import menu_icon from "@/assets/mobile/menu.png";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import home from "@/assets/icons/SideBar/home.png";
 import games from "@/assets/icons/SideBar/games.png";
 import history from "@/assets/icons/SideBar/history.png";
@@ -26,12 +26,23 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   const navigate = useNavigate();
   const [toggleMenu, setToogleMenu] = useState(false);
   const { wallet: myWalletInfo, loginWithWallet, logout } = useContext(AuthContext);
-  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider } =
+  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider, balance, getBalance, network, getNetwork } =
     useLaserEyes();
   const signOut = async () => {
     disconnect();
     logout();
   };
+
+  const satoshisToBTC = (satoshis: number | undefined): string => {
+    if (Number.isNaN(satoshis) || satoshis === undefined) return '--'
+    const btcValue = satoshis / 100000000
+    if (Number.isNaN(btcValue)) return '--'
+    return btcValue.toFixed(8)
+  }
+  // useEffect(() => {
+  //   getBalance();
+  // }, [connected, network])
+
   return (
     <div className="fixed left-0 right-0 top-0 z-20 border-b border-b-borderColor1  bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-2 pb-7 pt-14 sm:px-4 md:px-8 lg:px-12 lg:py-7">
@@ -47,7 +58,7 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
           </div>
         </div>
         <div className="flex gap-5">
-          <BalanceBox balance={0.0002} />
+          <BalanceBox balance={satoshisToBTC(balance)} />
           <ButtonDefault
             label="Deposit"
             customClasses="bg-darkButton px-16 border-0 font-space text-sm hidden lg:block"

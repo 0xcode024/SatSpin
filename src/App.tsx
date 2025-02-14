@@ -1,7 +1,7 @@
 import React from "react";
 import { RouterProvider } from "react-router-dom";
 import { ThemeProvider } from "@material-tailwind/react";
-import { LaserEyesProvider, MAINNET } from '@omnisat/lasereyes';
+import { LaserEyesProvider, MAINNET, TESTNET4, TESTNET } from '@omnisat/lasereyes';
 import routes from "@/routes";
 
 import "@/styles/index.scss";

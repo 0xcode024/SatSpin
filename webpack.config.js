@@ -92,6 +92,9 @@ const config = {
     onListening: function () {
       console.log('Listening on port:', PORT);
     },
+    client: {
+      overlay: false, // Disable Webpack error overlay
+    },
   },
   performance: {
     maxEntrypointSize: 512000,
