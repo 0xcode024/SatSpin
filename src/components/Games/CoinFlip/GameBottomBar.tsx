@@ -47,7 +47,7 @@ const GameBottomBar = () => {
                 1/2
               </div>
               <div className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1">
-                1/2
+                X 2
               </div>
             </div>
           </div>

@@ -8,11 +8,12 @@ import "@/styles/index.scss";
 import "swiper/css";
 import { Toaster } from "sonner";
 import AuthContextProvider from "./context/AuthContext";
+import { PUBLIC_NETWORK } from "./constants/config";
 
 const App: React.FC = () => {
   return (
     <ThemeProvider>
-      <LaserEyesProvider config={{ network: MAINNET }}>
+      <LaserEyesProvider config={{ network: PUBLIC_NETWORK as "mainnet" | "testnet" | "testnet4" | "signet" | "fractal mainnet" | "fractal testnet" }}>
       <AuthContextProvider>
         <RouterProvider router={routes} />
         <Toaster position="top-right" expand={false} />

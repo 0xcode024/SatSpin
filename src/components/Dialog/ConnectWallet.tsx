@@ -1,18 +1,16 @@
+import axios from "axios";
 import esc from "@/assets/images/esc.png";
 import WalletItem from "../Items/WalletItem";
-import { wallets } from "@/static/wallets";
 import ButtonDefault from "../Buttons/ButtonDefault";
 import { toast } from 'sonner';
-import { LEATHER, MAGIC_EDEN, OKX, OYL, UNISAT, WIZZ, XVERSE, PHANTOM, useLaserEyes, NetworkType } from '@omnisat/lasereyes';
+import { LEATHER, MAGIC_EDEN, OKX, OYL, UNISAT, XVERSE, PHANTOM, useLaserEyes, NetworkType } from '@omnisat/lasereyes';
 import { AuthContext } from '@/context/AuthContext';
 import { useContext, useEffect } from "react";
 import { SUPPORTED_WALLETS } from "@/context/AuthContext/auth.types";
 import {
   MAGIC_EDEN as magicEdenLogo,
   OKX as okxLogo,
-  OYL as oylLogo,
   UNISAT as unisatLogo,
-  WIZZ as wizzLogo,
   XVERSE as xVerseLogo,
   LEATHER as leatherLogo,
   PHANTOM as phantomLogo
@@ -37,40 +35,10 @@ interface ConnectWalletDialogProps {
 }
 const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
   const { wallet: myWalletInfo, loginWithWallet, logout } = useContext(AuthContext);
-  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider, network, getNetwork, switchNetwork } = useLaserEyes();
-
-  useEffect(() => {
-    const signInFirebase = async () => {
-      if (connected) {
-        console.log("paymentAddress, paymentPublicKey, address, publicKey");
-        console.log(paymentAddress, paymentPublicKey, address, publicKey);
-        const myConnect = async (wallet: SUPPORTED_WALLETS) => {
-          return loginWithWallet({
-            ordinalsAddress: address,
-            ordinalsPublicKey: publicKey,
-            paymentAddress,
-            paymentPublicKey,
-            wallet
-          });
-        };
-        try {
-          await myConnect(provider);
-          await getNetwork();
-        } catch (error: any) {
-          console.log("Catch: ", error.message);
-          // toast.error(error.message, duration);
-          disconnect();
-        }
-      }
-    };
-    signInFirebase();
-  }, [connected]);
+  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider, network, getNetwork, switchNetwork, signMessage, getBalance } = useLaserEyes();
 
   const handleConnectWallet = async (key: string) => {
     try {
-      // if (isMobile) {
-      //   handleOpenDialog();
-      // }
       if(key == "okx") {
         if (typeof window !== "undefined" && (window as any).okxwallet) {
           console.log("OKX Wallet is installed");

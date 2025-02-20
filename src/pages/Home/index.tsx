@@ -4,7 +4,6 @@ import mobile_banner from "@/assets/mobile/banner.png";
 import FlowBox from "@/components/Boxs/FlowBox";
 import BaseFooter from "@/components/Layout/BaseFooter";
 import Games from "@/components/Layout/Games";
-import { useState } from "react";
 
 export default function Home() {
   return (

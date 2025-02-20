@@ -4,17 +4,6 @@ import delta from "@/assets/images/profile/delta.png";
 import devon from "@/assets/images/profile/devon.png";
 import ronald from "@/assets/images/profile/ronald.png";
 import eleanor from "@/assets/images/profile/eleanor.png";
-import savannah from "@/assets/images/profile/savannah.png";
-import wade0 from "@/assets/images/profile/wade0.png";
-import wade1 from "@/assets/images/profile/wade1.png";
-import wade2 from "@/assets/images/profile/wade2.png";
-import wade3 from "@/assets/images/profile/wade3.png";
-import wade4 from "@/assets/images/profile/wade4.png";
-import wade5 from "@/assets/images/profile/wade5.png";
-import wade6 from "@/assets/images/profile/wade6.png";
-import wade7 from "@/assets/images/profile/wade7.png";
-import wade8 from "@/assets/images/profile/wade8.png";
-import square from "@/assets/images/square.png";
 const playerInfoData = [
   {
     id: "0x123123",

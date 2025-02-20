@@ -1,13 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react';
-// import { WALLET_COOKIE } from '@/lib/constants';
-// import { signOut } from 'next-auth/react';
-// import { auth } from '@/lib/firebase';
-import { WALLET_COOKIE } from '@/constants/auth.constants';
-
 import { IAuthContext, IWallet } from './auth.types';
-
 export const AuthContext = createContext<IAuthContext>({} as any);
-import type { SUPPORTED_WALLETS } from '@/context/AuthContext/auth.types';
 
 const AuthContextProvider = ({ children }: { children: NonNullable<ReactNode> }) => {
   const [wallet, setWallet] = useState<IWallet | null>(null);
