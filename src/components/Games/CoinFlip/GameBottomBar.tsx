@@ -1,7 +1,9 @@
 import SlideBar from "./SlideBar";
 import sat_coin from "@/assets/images/game_icons/sat_icon.png";
 import usd_coin from "@/assets/images/game_icons/usd_icon.png";
+import { useState } from "react";
 const GameBottomBar = () => {
+  const [betAmount, setBetAmount] = useState(0);
   return (
     <div className=" align-center static bottom-0 mt-2 flex w-full flex-col justify-between bg-bgColor28 px-8 py-10 text-sm md:text-lg xl:absolute xl:m-0 xl:w-[calc(100%-260px)] xl:flex-row xl:bg-black xl:px-6 xl:py-4 xl:text-sm 2xl:text-lg">
       <div className="w-full xl:w-[160px] 2xl:w-[232px]">
@@ -10,12 +12,17 @@ const GameBottomBar = () => {
           <SlideBar />
         </div>
       </div>
-      <div className="flex-between block flex flex-col gap-6 xl:flex-row xl:gap-2 2xl:gap-3">
+      <div className="flex-between block flex flex-col gap-6 xl:flex-row xl:gap-2 2xl:gap-6">
         <div className="flex justify-between">
           <div className="w-[70%] xl:w-full">
             <div className="text-bgColor27 xl:text-white">POTENTIAL WIN</div>
-            <div className="w-[90%] rounded-lg bg-bgColor2 py-4 pl-4 pr-20 text-lg md:w-full xl:text-sm 2xl:text-lg">
-              $200
+            <div className="flex items-center w-[90%] rounded-lg bg-bgColor2 py-2 pl-4 pr-20 text-lg md:w-full xl:text-sm 2xl:text-lg w-20">
+              <p>$</p>
+              <input
+                type="text"
+                value={(betAmount * 1.92).toFixed(3)}
+                className="text-lg xl:text-sm 2xl:text-lg bg-transparent outline-none px-1 py-1 w-20 cursor-pointer"
+              />
             </div>
           </div>
           <div className="block flex flex-col xl:hidden">
@@ -40,16 +47,41 @@ const GameBottomBar = () => {
         </div>
         <div className="order-0 xl:order-1">
           <div className="text-bgColor27 xl:text-white">WAGER</div>
-          <div className="3xl:gap-20 flex items-center justify-between gap-10 rounded-lg bg-bgColor2 px-6 py-2">
-            <div className="text-lg xl:text-sm 2xl:text-lg">$100</div>
-            <div className="flex items-center gap-3 text-bg-dark">
-              <div className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1">
+          <div className="3xl:gap-20 flex items-center justify-between gap-3 rounded-lg bg-bgColor2 px-6 py-2">
+            {/* <div className="text-lg xl:text-sm 2xl:text-lg">$100</div> */}
+            <div className="flex items-center">
+              <p>$</p>
+              <input
+                type="text"
+                value={betAmount}
+                onChange={(e: any) => {console.log(e.target.value); setBetAmount(e.target.value)}}
+                className="text-lg xl:text-sm 2xl:text-lg bg-transparent outline-none px-1 py-1 w-20"
+              />
+            </div>
+            {/* <div className="flex items-center gap-3 text-bg-dark ">
+              <div className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 cursor-pointer" onClick={() => setBetAmount(betAmount / 2)}>
                 1/2
               </div>
-              <div className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1">
+              <div className="rounded-lg border-[3px] br-20 bg-bgColor19 px-2 py-1  cursor-pointer" onClick={() => setBetAmount(betAmount * 2)}>
                 X 2
               </div>
+            </div> */}
+          <div className="flex items-center gap-3 text-bg-dark">
+            <div
+              className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 cursor-pointer transition-all duration-200 
+                        hover:bg-bgColor20 hover:border-bgColor19 hover:scale-105 active:scale-95 active:bg-bgColor18"
+              onClick={() => setBetAmount(betAmount / 2)}
+            >
+              1/2
             </div>
+            <div
+              className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 cursor-pointer transition-all duration-200 
+                        hover:bg-bgColor20 hover:border-bgColor19 hover:scale-105 active:scale-95 active:bg-bgColor18"
+              onClick={() => setBetAmount(betAmount * 2)}
+            >
+              X 2
+            </div>
+          </div>
           </div>
         </div>
       </div>

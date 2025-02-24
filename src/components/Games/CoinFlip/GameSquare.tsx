@@ -1,28 +1,34 @@
 import square from "@/assets/images/square.png";
 import sat_icon from "@/assets/images/game_icons/sat_icon.png";
+import usd_icon from "@/assets/images/game_icons/usd_icon.png";
 import logo from "@/assets/images/logo.png";
 import { useRef, useState } from "react";
 
 const GameSquare = () => {
-  const coinRef = useRef<any>(null);
-  const [rotation, setRotation] = useState(0);
-  const [flipDuration, setFlipDuration] = useState(500);
-  const [coinStatus, setCoinStatus] = useState(false);
+    const size = 1000;
+    const coinRef = useRef<any>(null);
+    const [rotation, setRotation] = useState(0);
+    const [flipDuration, setFlipDuration] = useState(500);
+    const [coinStatus, setCoinStatus] = useState(false);
 
-  const rotateCoin = async () => {
-    const coin = coinRef.current;
-    if (coin) {
-      const num = Math.floor(Math.random() * 7) + 1;
-      setCoinStatus(true);
-      coin.style.transition = `transform ${500 * num}ms ease`;
-      coin.style.transform = `rotateY(${rotation + 180 * num}deg)`;
+    const rotateCoin = async () => {
+      const coin = coinRef.current;
+      if (coin) {
+        const num = Math.floor(Math.random() * 7) + 1;
+        setCoinStatus(true);
+        coin.style.transition = `transform ${flipDuration * num}ms ease`;
+        coin.style.transform = `rotateY(${rotation + 180 * num}deg)`;
+  
+        setRotation(rotation + 180 * num);
+        setTimeout(() => {
+          setCoinStatus(false)
+        }, 500 * num);
+      }
+    };
+    const height = 300;
+    const width = 20;
+    const spoke_height = height / 10;
 
-      setRotation(rotation + 180 * num);
-      setTimeout(() => {
-        setCoinStatus(false)
-      }, 500 * num);
-    }
-  };
   return (
     <div
       className="relative flex flex-shrink flex-grow items-center justify-center gap-2 overflow-hidden rounded-lg border border-borderColor1 pb-8 xl:border-0"
@@ -44,12 +50,12 @@ const GameSquare = () => {
         </div>
       </div>
 
-      <div className="px-12 pb-12 pt-28 xl:pt-0">
+      <div className="px-12 pb-12 pt-28 xl:pt-0" style={{ "--height": `${height}px`, "--spoke-height": `${spoke_height}px`, "--width": `${width}px` } as React.CSSProperties}>
         <div>
           <style>{`
             .purse {
-              height: 160px;
-              width: 160px;
+              height: var(--height);
+              width: var(--height);
               perspective: 1000;
               cursor: pointer;
               -webkit-perspective: 1000;
@@ -61,8 +67,8 @@ const GameSquare = () => {
               -webkit-filter: saturate(1.45) hue-rotate(2deg);
             }
             .coin {
-              height: 160px;
-              width: 160px;
+              height: var(--height);
+              width: var(--height);
               position: absolute;
               transform-style: preserve-3d;
               -webkit-transform-style: preserve-3d;
@@ -72,30 +78,30 @@ const GameSquare = () => {
             .coin .front,
             .coin .back {
               position: absolute;
-              height: 160px;
-              width: 160px;
+              height: var(--height);
+              width: var(--height);
               border-radius: 50%;
               background-size: cover;
             }
             .coin .front {
-              transform: translateZ(8px);
-              -webkit-transform: translateZ(8px);
+              transform: translateZ(calc(var(--width) / 2));
+              -webkit-transform: translateZ(calc(var(--width) / 2));
             }
             .coin .back {
-              transform: translateZ(-8px) rotateY(180deg);
-              -webkit-transform: translateZ(-8px) rotateY(180deg);
+              transform: translateZ(calc(var(--width) / -2)) rotateY(180deg);
+              -webkit-transform: translateZ(calc(var(--width) / -2)) rotateY(180deg);
             }
             .coin .side {
-              transform: translateX(72px);
-              -webkit-transform: translateX(72px);
+              transform: translateX(140px);
+              -webkit-transform: translateX(140px);
               transform-style: preserve-3d;
               -webkit-transform-style: preserve-3d;
               backface-visibility: hidden;
               -webkit-backface-visibility: hidden;
             }
             .coin .side .spoke {
-              height: 160px;
-              width: 16px;
+              height: var(--height);
+              width: var(--width);
               position: absolute;
               transform-style: preserve-3d;
               -webkit-transform-style: preserve-3d;
@@ -107,8 +113,9 @@ const GameSquare = () => {
             .coin .side .spoke:after {
               content: '';
               display: block;
-              height: 15.68274245px;
-              width: 16px;
+              // height: 15.68274245px;
+              height: var(--spoke-height);
+              width: var(--width);
               position: absolute;
               transform: rotateX(84.375deg);
               -webkit-transform: rotateX(84.375deg);
@@ -120,6 +127,7 @@ const GameSquare = () => {
                 rgb(249, 185, 0) 100%
               );
               background-size: 100% 3.48505388px;
+              // background-size: 10px;
             }
             .coin .side .spoke:before {
               transform-origin: top center;
@@ -205,9 +213,8 @@ const GameSquare = () => {
           `}</style>
           <div className="purse" onClick={() => {if(!coinStatus) {rotateCoin()}}}>
             <div className="coin" ref={coinRef}>
-            {/* style={{ backgroundImage: `url(${sat_icon})` }} */}
               <div className="front" style={{ backgroundImage: `url(${sat_icon})` }}></div>
-              <div className="back" style={{ backgroundImage: `url(${sat_icon})` }}></div>
+              <div className="back" style={{ backgroundImage: `url(${usd_icon})` }}></div>
               <div className="side">
                 <div className="spoke"></div>
                 <div className="spoke"></div>
