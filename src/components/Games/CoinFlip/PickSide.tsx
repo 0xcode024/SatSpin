@@ -9,8 +9,8 @@ const PickSide = () => {
         <div className="">PICK SIDE</div>
         <div className="h-[3px] w-full bg-bgColor11"></div>
         <div className="flex flex-col gap-8">
-          <img src={usd_icon} />
-          <img src={sat_icon} />
+          <img src={usd_icon} width={"80px"} />
+          <img src={sat_icon} width={"80px"} />
         </div>
         <div className="h-[3px] w-full bg-bgColor11"></div>
         <div className="flex w-full justify-between gap-4">
