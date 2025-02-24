@@ -10,7 +10,6 @@ const GameSquare = () => {
   const [coinStatus, setCoinStatus] = useState(false);
 
   const rotateCoin = async () => {
-    console.log("1");
     const coin = coinRef.current;
     if (coin) {
       const num = Math.floor(Math.random() * 7) + 1;
@@ -20,7 +19,6 @@ const GameSquare = () => {
 
       setRotation(rotation + 180 * num);
       setTimeout(() => {
-        console.log("FFFF");
         setCoinStatus(false)
       }, 500 * num);
     }
@@ -205,7 +203,7 @@ const GameSquare = () => {
               right: 0;
             }
           `}</style>
-          <div className="purse" onClick={() => {console.log("coinStatus", coinStatus); if(!coinStatus) {rotateCoin()}}}>
+          <div className="purse" onClick={() => {if(!coinStatus) {rotateCoin()}}}>
             <div className="coin" ref={coinRef}>
             {/* style={{ backgroundImage: `url(${sat_icon})` }} */}
               <div className="front" style={{ backgroundImage: `url(${sat_icon})` }}></div>
