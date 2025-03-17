@@ -37,4 +37,24 @@ export function getFormattedTime(input: string) {
   return `${hours}:${minutes} ${ampm}`;
 }
 
-export const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+export const addressShortening = (address: string): string => {
+  return `${address.slice(0, 5)}...${address.slice(-4)}`;
+};
+
+export const delay = (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+export const formatNumber = (num: any) => {
+  // Limit to 3 decimal places
+  let formatted = num.toFixed(3);
+
+  // Remove trailing zeros
+  formatted = formatted.replace(/(\.\d*?)0+$/, "$1");
+
+  // If the decimal point is left with no digits, remove it
+  if (formatted.endsWith(".")) {
+    formatted = formatted.slice(0, -1);
+  }
+
+  return formatted;
+};

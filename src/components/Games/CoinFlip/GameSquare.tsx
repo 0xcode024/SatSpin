@@ -4,30 +4,31 @@ import usd_icon from "@/assets/images/game_icons/usd_icon.png";
 import logo from "@/assets/images/logo.png";
 import { useRef, useState } from "react";
 
-const GameSquare = () => {
-    const size = 1000;
-    const coinRef = useRef<any>(null);
-    const [rotation, setRotation] = useState(0);
-    const [flipDuration, setFlipDuration] = useState(500);
-    const [coinStatus, setCoinStatus] = useState(false);
+interface GameSquareProps {
+  getRotateCount: () => Promise<number>;
+}
+const GameSquare = ({ getRotateCount }: GameSquareProps) => {
+  const coinRef = useRef<any>(null);
+  const [rotation, setRotation] = useState(0);
+  const [flipDuration, setFlipDuration] = useState(500);
+  const [coinStatus, setCoinStatus] = useState(false);
 
-    const rotateCoin = async () => {
-      const coin = coinRef.current;
-      if (coin) {
-        const num = Math.floor(Math.random() * 7) + 1;
-        setCoinStatus(true);
-        coin.style.transition = `transform ${flipDuration * num}ms ease`;
-        coin.style.transform = `rotateY(${rotation + 180 * num}deg)`;
-  
-        setRotation(rotation + 180 * num);
-        setTimeout(() => {
-          setCoinStatus(false)
-        }, 500 * num);
-      }
-    };
-    const height = 300;
-    const width = 20;
-    const spoke_height = height / 10;
+  const rotateCoin = async (num: number) => {
+    const coin = coinRef.current;
+    if (coin) {
+      setCoinStatus(true);
+      coin.style.transition = `transform ${flipDuration * num}ms ease`;
+      coin.style.transform = `rotateY(${rotation + 180 * num}deg)`;
+
+      setRotation(rotation + 180 * num);
+      setTimeout(() => {
+        setCoinStatus(false);
+      }, 500 * num);
+    }
+  };
+  const height = 300;
+  const width = 20;
+  const spoke_height = height / 10;
 
   return (
     <div
@@ -37,7 +38,7 @@ const GameSquare = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundBlendMode: "blend", // or another blend mode
-        backgroundColor: "rgba(0, 0, 0, 0.25)"
+        backgroundColor: "rgba(0, 0, 0, 0.25)",
       }}
     >
       <div className="absolute top-14 flex w-full flex-col items-center justify-center gap-2 px-[20px] lg:flex-row 2xl:justify-between">
@@ -50,7 +51,16 @@ const GameSquare = () => {
         </div>
       </div>
 
-      <div className="px-12 pb-12 pt-28 xl:pt-0" style={{ "--height": `${height}px`, "--spoke-height": `${spoke_height}px`, "--width": `${width}px` } as React.CSSProperties}>
+      <div
+        className="px-12 pb-12 pt-28 xl:pt-0"
+        style={
+          {
+            "--height": `${height}px`,
+            "--spoke-height": `${spoke_height}px`,
+            "--width": `${width}px`,
+          } as React.CSSProperties
+        }
+      >
         <div>
           <style>{`
             .purse {
@@ -211,10 +221,26 @@ const GameSquare = () => {
               right: 0;
             }
           `}</style>
-          <div className="purse" onClick={() => {if(!coinStatus) {rotateCoin()}}}>
+          <div
+            className="purse"
+            onClick={async () => {
+              if (!coinStatus) {
+                const num = await getRotateCount();
+                if (num != -1) {
+                  rotateCoin(num);
+                }
+              }
+            }}
+          >
             <div className="coin" ref={coinRef}>
-              <div className="front" style={{ backgroundImage: `url(${sat_icon})` }}></div>
-              <div className="back" style={{ backgroundImage: `url(${usd_icon})` }}></div>
+              <div
+                className="front"
+                style={{ backgroundImage: `url(${sat_icon})` }}
+              ></div>
+              <div
+                className="back"
+                style={{ backgroundImage: `url(${usd_icon})` }}
+              ></div>
               <div className="side">
                 <div className="spoke"></div>
                 <div className="spoke"></div>
@@ -235,7 +261,7 @@ const GameSquare = () => {
               </div>
             </div>
           </div>
-    </div>
+        </div>
       </div>
     </div>
   );

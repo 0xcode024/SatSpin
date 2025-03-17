@@ -19,10 +19,12 @@ const PlayerBar = ({
   const gameHistoryContainerRef = useRef<HTMLDivElement | null>(null);
   const handleScroll = () => {
     if (gameHistoryContainerRef.current) {
-      console.log(gameHistoryContainerRef.current.scrollBy({
-        top: 50,
-        behavior: "smooth"
-      }));
+      console.log(
+        gameHistoryContainerRef.current.scrollBy({
+          top: 50,
+          behavior: "smooth",
+        })
+      );
     }
   };
 
@@ -35,7 +37,7 @@ const PlayerBar = ({
     >
       <div className="bg-bgColor8 py-7 text-center"> {title} </div>
       <div
-        className="flex  flex-col gap-2 overflow-auto bg-bgColor11 min-h-full h-[200px]"
+        className="flex  h-[200px] min-h-full flex-col gap-2 overflow-auto bg-bgColor11"
         ref={gameHistoryContainerRef}
       >
         {playerInfoData.map((data, key) => (
@@ -50,10 +52,13 @@ const PlayerBar = ({
           />
         ))}
       </div>
-      <div onClick={handleScroll} className="absolute bottom-0 hidden md:flex h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent">
+      <div
+        onClick={handleScroll}
+        className="absolute bottom-0 hidden h-[120px] w-full cursor-pointer items-center justify-center bg-gradient-to-t from-bg-dark to-transparent md:flex"
+      >
         <img src={vector_img}></img>
       </div>
-    </div >
+    </div>
   );
 };
 

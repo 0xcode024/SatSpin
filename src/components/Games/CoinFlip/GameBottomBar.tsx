@@ -2,8 +2,11 @@ import SlideBar from "./SlideBar";
 import sat_coin from "@/assets/images/game_icons/sat_icon.png";
 import usd_coin from "@/assets/images/game_icons/usd_icon.png";
 import { useState } from "react";
-const GameBottomBar = () => {
-  const [betAmount, setBetAmount] = useState(0);
+interface GameBottomBarProps {
+  betAmount: number;
+  setBetAmount: (amount: number) => void;
+}
+const GameBottomBar = ({ betAmount, setBetAmount }: GameBottomBarProps) => {
   return (
     <div className=" align-center static bottom-0 mt-2 flex w-full flex-col justify-between bg-bgColor28 px-8 py-10 text-sm md:text-lg xl:absolute xl:m-0 xl:w-[calc(100%-260px)] xl:flex-row xl:bg-black xl:px-6 xl:py-4 xl:text-sm 2xl:text-lg">
       <div className="w-full xl:w-[160px] 2xl:w-[232px]">
@@ -16,12 +19,13 @@ const GameBottomBar = () => {
         <div className="flex justify-between">
           <div className="w-[70%] xl:w-full">
             <div className="text-bgColor27 xl:text-white">POTENTIAL WIN</div>
-            <div className="flex items-center w-[90%] rounded-lg bg-bgColor2 py-2 pl-4 pr-20 text-lg md:w-full xl:text-sm 2xl:text-lg w-20">
+            <div className="flex w-20 w-[90%] items-center rounded-lg bg-bgColor2 py-2 pl-4 pr-20 text-lg md:w-full xl:text-sm 2xl:text-lg">
               <p>$</p>
               <input
                 type="text"
-                value={(betAmount * 1.92).toFixed(3)}
-                className="text-lg xl:text-sm 2xl:text-lg bg-transparent outline-none px-1 py-1 w-20 cursor-pointer"
+                value={(betAmount * 1.92).toFixed(5).replace(/\.?0+$/, "")}
+                readOnly
+                className="w-20 cursor-pointer bg-transparent px-1 py-1 text-lg outline-none xl:text-sm 2xl:text-lg"
               />
             </div>
           </div>
@@ -54,34 +58,29 @@ const GameBottomBar = () => {
               <input
                 type="text"
                 value={betAmount}
-                onChange={(e: any) => {console.log(e.target.value); setBetAmount(e.target.value)}}
-                className="text-lg xl:text-sm 2xl:text-lg bg-transparent outline-none px-1 py-1 w-20"
+                onChange={(e: any) => {
+                  console.log(e.target.value);
+                  setBetAmount(e.target.value);
+                }}
+                className="w-20 bg-transparent px-1 py-1 text-lg outline-none xl:text-sm 2xl:text-lg"
               />
             </div>
-            {/* <div className="flex items-center gap-3 text-bg-dark ">
-              <div className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 cursor-pointer" onClick={() => setBetAmount(betAmount / 2)}>
+            <div className="flex items-center gap-3 text-bg-dark">
+              <div
+                className="cursor-pointer rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 transition-all duration-200 
+                        hover:scale-105 hover:border-bgColor19 hover:bg-bgColor20 active:scale-95 active:bg-bgColor18"
+                onClick={() => setBetAmount(betAmount / 2)}
+              >
                 1/2
               </div>
-              <div className="rounded-lg border-[3px] br-20 bg-bgColor19 px-2 py-1  cursor-pointer" onClick={() => setBetAmount(betAmount * 2)}>
+              <div
+                className="cursor-pointer rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 transition-all duration-200 
+                        hover:scale-105 hover:border-bgColor19 hover:bg-bgColor20 active:scale-95 active:bg-bgColor18"
+                onClick={() => setBetAmount(betAmount * 2)}
+              >
                 X 2
               </div>
-            </div> */}
-          <div className="flex items-center gap-3 text-bg-dark">
-            <div
-              className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 cursor-pointer transition-all duration-200 
-                        hover:bg-bgColor20 hover:border-bgColor19 hover:scale-105 active:scale-95 active:bg-bgColor18"
-              onClick={() => setBetAmount(betAmount / 2)}
-            >
-              1/2
             </div>
-            <div
-              className="rounded-lg border-[3px] border-bgColor20 bg-bgColor19 px-2 py-1 cursor-pointer transition-all duration-200 
-                        hover:bg-bgColor20 hover:border-bgColor19 hover:scale-105 active:scale-95 active:bg-bgColor18"
-              onClick={() => setBetAmount(betAmount * 2)}
-            >
-              X 2
-            </div>
-          </div>
           </div>
         </div>
       </div>
