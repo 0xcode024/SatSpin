@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import gameHistoryData from "@/static/gameHistory";
 import CoinflipLeaderboard from "../GameLeaderBoard";
@@ -14,12 +14,20 @@ import { getJWT, isTokenExpired } from "@/utils/token";
 import { JWT_COOKIE } from "@/constants/auth.constants";
 import { useLaserEyes } from "@omnisat/lasereyes";
 import { useAccountContext } from "@/context/AccountContext";
+import { toast } from "sonner";
+
+type HistoryEntry = {
+  status: boolean;
+  amount: number;
+};
+
 const GameBoard = () => {
   const { point, setPoint } = useAccountContext();
   const [selectedSide, setSelectedSide] = useState("");
   const [betAmount, setBetAmount] = useState(0);
   const [current, setCurrent] = useState("heads");
   const gameHistoryContainerRef = useRef<HTMLDivElement | null>(null);
+  const [gameHistory, setGameHistory] = useState<HistoryEntry[]>([]);
   const {
     connect,
     connected,
@@ -38,6 +46,37 @@ const GameBoard = () => {
     signMessage,
     signPsbt,
   } = useLaserEyes();
+
+  useEffect(() => {
+    const fetchHistory = async () => {
+      if (!paymentAddress) return;
+      console.log(
+        "HISTORY => ",
+        `${BASE_URL}api/games/coinflip/history/${paymentAddress}`
+      );
+      const response = await axios
+        .get(`${BASE_URL}api/games/coinflip/history/${paymentAddress}`)
+        .then((res) => {
+          return res.data;
+        })
+        .catch((err) => console.error("Error fetching points:", err));
+      console.log("res history:", response);
+      let history: HistoryEntry[] = [];
+
+      if (response) {
+        for (const item of response.history) {
+          history.push({
+            status: item.win,
+            amount: item.payout,
+          });
+        }
+        setGameHistory(history);
+      }
+    };
+    fetchHistory();
+    // setPoint(formatNumber(response.balance.btc));
+  }, [paymentAddress]);
+
   const sign = async (message: string) => {
     try {
       const result = sessionStorage.getItem(JWT_COOKIE);
@@ -88,6 +127,19 @@ const GameBoard = () => {
       await sign("Sat Spin: Test Message");
       token = sessionStorage.getItem(JWT_COOKIE);
     }
+
+    if (!selectedSide) {
+      toast.info("Select one side of the coin.", {
+        duration: 2000,
+      });
+      return -1;
+    }
+    if (!betAmount) {
+      toast.info("Set your bet amount.", {
+        duration: 2000,
+      });
+      return -1;
+    }
     if (token && selectedSide && betAmount && current) {
       const response = await axios
         .post(
@@ -112,6 +164,18 @@ const GameBoard = () => {
 
       setTimeout(() => {
         setPoint(response.newBalance);
+        toast.info(
+          response.win
+            ? `🎉 Congratulations! You won the coin flip! You gained ${response.payout}. Your new balance is ${response.newBalance}.`
+            : `😢 Oh no! You lost the coin flip. You lost ${response.payout}. Your new balance is ${response.newBalance}.`,
+          {
+            duration: 2000,
+          }
+        );
+        setGameHistory([
+          ...gameHistory,
+          { status: response.win, amount: response.payout },
+        ]);
       }, 500 * response.num);
 
       if (response.num % 2 == 1) {
@@ -144,11 +208,11 @@ const GameBoard = () => {
           ref={gameHistoryContainerRef}
           className="flex h-[560px] flex-col gap-2 overflow-auto bg-bgColor11 pr-3"
         >
-          {gameHistoryData.map((data, key) => (
+          {[...gameHistory].reverse().map((data, index) => (
             <GameHistoryItem
-              status={data.status}
+              key={index}
               amount={data.amount}
-              key={key}
+              status={data.status}
             />
           ))}
         </div>
@@ -166,7 +230,12 @@ const GameBoard = () => {
         bar_height="250px"
       />
 
-      <GameBottomBar betAmount={betAmount} setBetAmount={setBetAmount} />
+      <GameBottomBar
+        betAmount={betAmount}
+        setBetAmount={setBetAmount}
+        selectedSide={selectedSide}
+        setSelectedSide={setSelectedSide}
+      />
     </div>
   );
 };

@@ -5,8 +5,15 @@ import { useState } from "react";
 interface GameBottomBarProps {
   betAmount: number;
   setBetAmount: (amount: number) => void;
+  selectedSide: string;
+  setSelectedSide: (option: string) => void;
 }
-const GameBottomBar = ({ betAmount, setBetAmount }: GameBottomBarProps) => {
+const GameBottomBar = ({
+  betAmount,
+  setBetAmount,
+  selectedSide,
+  setSelectedSide,
+}: GameBottomBarProps) => {
   return (
     <div className=" align-center static bottom-0 mt-2 flex w-full flex-col justify-between bg-bgColor28 px-8 py-10 text-sm md:text-lg xl:absolute xl:m-0 xl:w-[calc(100%-260px)] xl:flex-row xl:bg-black xl:px-6 xl:py-4 xl:text-sm 2xl:text-lg">
       <div className="w-full xl:w-[160px] 2xl:w-[232px]">
@@ -32,10 +39,24 @@ const GameBottomBar = ({ betAmount, setBetAmount }: GameBottomBarProps) => {
           <div className="block flex flex-col xl:hidden">
             <div className="text-bgColor27 xl:text-white">Pick Side</div>
             <div className="flex w-full flex-grow items-center justify-between gap-3">
-              <div className="w-[40px] sm:w-[50px]">
+              <div
+                onClick={() => setSelectedSide("heads")}
+                className={`w-[65px] cursor-pointer rounded-full border-8 p-0 shadow-lg transition-all duration-200 ${
+                  selectedSide === "heads"
+                    ? "border-bgColor47"
+                    : "border-bgColor8"
+                }`}
+              >
                 <img src={sat_coin} />
               </div>
-              <div className="w-[40px] sm:w-[50px]">
+              <div
+                onClick={() => setSelectedSide("tails")}
+                className={`w-[65px] cursor-pointer rounded-full border-8 p-0 shadow-lg transition-all duration-200 ${
+                  selectedSide === "tails"
+                    ? "border-bgColor47"
+                    : "border-bgColor8"
+                }`}
+              >
                 <img src={usd_coin} />
               </div>
             </div>

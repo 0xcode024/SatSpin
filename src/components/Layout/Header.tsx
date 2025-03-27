@@ -24,6 +24,7 @@ import { toast } from "sonner";
 import { isTokenExpired } from "@/utils/token";
 import { useAccountContext } from "@/context/AccountContext";
 import { formatNumber } from "@/utils/utils";
+import ManageFundsDialog from "../Dialog/ManageFundsDialog";
 
 interface HeaderProps {
   onDeposit: () => void;
@@ -33,6 +34,7 @@ interface HeaderProps {
 const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   const navigate = useNavigate();
   const [toggleMenu, setToogleMenu] = useState(false);
+  const [show, setShow] = useState(false);
   const {
     wallet: myWalletInfo,
     loginWithWallet,
@@ -260,8 +262,9 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             label="Deposit"
             customClasses="bg-darkButton px-16 border-0 font-space text-sm hidden lg:block"
             onClick={() => {
-              depositBTC("1000");
+              // depositBTC("1000");
               // onDeposit();
+              setShow(true);
             }}
           />
         </div>
@@ -390,6 +393,7 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
           </div>
         </div>
       )}
+      {show && <ManageFundsDialog open={show} onClose={() => setShow(false)} />}
     </div>
   );
 };

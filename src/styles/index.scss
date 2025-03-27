@@ -158,3 +158,19 @@ body {
   visibility: visible;
   opacity: 1;
 }
+
+.transparent-input {
+  background: transparent;
+  color: #000;
+  outline: none; /* Removes the blue outline on focus */
+  font-size: 20px;
+  color: white;
+}
+@keyframes flow {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 20px 20px; /* Moves the pattern from left to right */
+  }
+}

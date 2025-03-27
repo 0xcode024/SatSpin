@@ -1,16 +1,42 @@
 import { Suspense, useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { LEATHER, MAGIC_EDEN, OKX, OYL, UNISAT, WIZZ, XVERSE, PHANTOM, useLaserEyes } from '@omnisat/lasereyes';
+import {
+  LEATHER,
+  MAGIC_EDEN,
+  OKX,
+  OYL,
+  UNISAT,
+  WIZZ,
+  XVERSE,
+  PHANTOM,
+  useLaserEyes,
+} from "@omnisat/lasereyes";
 import PageLoading from "@/components/Loading/PageLoading";
 import Header from "@/components/Layout/Header";
 import SideBar from "@/components/Layout/SideBar";
-import FundsDialog from "@/components/Dialog/FundsDialog";
 import ConnectWalletDialog from "@/components/Dialog/ConnectWallet";
+import ManageFundsDialog from "@/components/Dialog/ManageFundsDialog";
+import DepositStatusDialog from "@/components/Dialog/DepositStatusDialog";
 
 export default function Layout() {
-  const { connect, connected, paymentAddress, paymentPublicKey, address, publicKey, hasUnisat, disconnect, provider, network, getNetwork, switchNetwork, getBalance } = useLaserEyes();
+  const {
+    connect,
+    connected,
+    paymentAddress,
+    paymentPublicKey,
+    address,
+    publicKey,
+    hasUnisat,
+    disconnect,
+    provider,
+    network,
+    getNetwork,
+    switchNetwork,
+    getBalance,
+  } = useLaserEyes();
   const [show, setShow] = useState(false);
   const [connectWallet, setConnectWallet] = useState(false);
+
   return (
     <div className="text-white">
       <Suspense fallback={<PageLoading />}>
@@ -20,13 +46,15 @@ export default function Layout() {
         />
         <SideBar />
         <Outlet />
-        {show && <FundsDialog open={show} onClose={() => setShow(false)} />}
+        {/* {show && (
+          <ManageFundsDialog open={show} onClose={() => setShow(false)} />
+        )} */}
         {connectWallet && (
           <ConnectWalletDialog
             open={connectWallet}
             onClose={() => setConnectWallet(false)}
           />
-        )} 
+        )}
       </Suspense>
     </div>
   );

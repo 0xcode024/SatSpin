@@ -8,14 +8,4 @@ export const depositCoins = [
     symbol: "BTC",
     image: bitcoin,
   },
-  {
-    name: "Ethereum",
-    symbol: "ETH",
-    image: ethereum,
-  },
-  {
-    name: "USDC",
-    symbol: "USDC",
-    image: usdc,
-  },
 ];

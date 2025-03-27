@@ -42,6 +42,7 @@ export default withMT({
       variants: ["sm", "md", "lg", "xl"],
     },
   ],
+
   theme: {
     colors: {
       primary: "#0A1128",
@@ -75,7 +76,7 @@ export default withMT({
       bgColor6: "#464646",
       bgColor7: "#303132",
       bgColor8: "#121212",
-      bgColor9: "#090909",
+      bgColor9: "#0E0E0E",
       bgColor10: "#1C1C1C",
       bgColor11: "#2B2B2B",
       bgColor12: "#6C6C6C",
@@ -114,6 +115,7 @@ export default withMT({
       bgColor45: "#5CC285",
       bgColor46: "#F54B5F",
       bgColor47: "#5B554C",
+      "neon-green": "#0bff83",
     },
     fontFamily: {},
     extend: {
