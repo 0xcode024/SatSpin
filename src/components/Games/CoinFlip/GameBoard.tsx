@@ -122,11 +122,11 @@ const GameBoard = () => {
   };
 
   const getRotateCount = async () => {
-    let token = await getJWT();
-    console.log("TOKEN--->", token);
-    if (token == null || isTokenExpired(token)) {
-      await sign("Sat Spin: Test Message");
-      token = sessionStorage.getItem(JWT_COOKIE);
+    if (!paymentAddress || !connected) {
+      toast.info("Please connect your wallet first", {
+        duration: 1000,
+      });
+      return -1;
     }
 
     if (!selectedSide) {
@@ -141,6 +141,13 @@ const GameBoard = () => {
       });
       return -1;
     }
+
+    let token = await getJWT();
+    if (token == null || isTokenExpired(token)) {
+      await sign("Sat Spin: Test Message");
+      token = sessionStorage.getItem(JWT_COOKIE);
+    }
+
     if (token && selectedSide && betAmount && current) {
       const response = await axios
         .post(

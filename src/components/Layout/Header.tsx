@@ -171,7 +171,13 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             label="Deposit"
             customClasses="bg-darkButton px-16 border-0 font-space text-sm hidden lg:block"
             onClick={() => {
-              setShow(true);
+              if (paymentAddress && connected) {
+                setShow(true);
+              } else {
+                toast.info("Please connect your wallet first", {
+                  duration: 1000,
+                });
+              }
             }}
           />
         </div>
