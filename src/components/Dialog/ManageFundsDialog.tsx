@@ -147,10 +147,12 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
     socket.on("UpdateUser", async (data: any) => {
       console.log("UpdateUser Event", data);
       if (data.user.paymentAddress == paymentAddress) {
+        setDepositStatus("Your updated balance will reflect shortly");
         setProgress(100);
-        await delay(1000);
-        setShowDepositDialog(false);
-        onClose();
+        delay(2000).then(() => {
+          setShowDepositDialog(false);
+          onClose();
+        });
       }
     });
   }, [paymentAddress]);

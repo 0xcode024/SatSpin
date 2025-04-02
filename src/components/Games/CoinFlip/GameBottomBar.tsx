@@ -27,7 +27,7 @@ const GameBottomBar = ({
           <div className="w-[70%] xl:w-full">
             <div className="text-bgColor27 xl:text-white">POTENTIAL WIN</div>
             <div className="flex w-20 w-[90%] items-center rounded-lg bg-bgColor2 py-2 pl-4 pr-20 text-lg md:w-full xl:text-sm 2xl:text-lg">
-              <p>$</p>
+              <p>₿</p>
               <input
                 type="text"
                 value={(betAmount * 1.92).toFixed(5).replace(/\.?0+$/, "")}
@@ -67,7 +67,16 @@ const GameBottomBar = ({
           <div className="flex items-center justify-around gap-1 rounded-lg bg-bgColor2 bg-gradient-to-r from-bgColor16 to-bgColor17 px-1 py-3 font-bold text-black 2xl:gap-3">
             <div>Flip Coin</div>
             <div className="h-[30px] w-[2px] bg-bgColor18"></div>
-            <div>100 USD</div>
+            <div className="text-center">
+              <input
+                className="w-[80px] bg-transparent outline-none"
+                value={Number(betAmount)
+                  .toFixed(5)
+                  .replace(/\.?0+$/, "")}
+                readOnly
+              />{" "}
+              ₿
+            </div>
           </div>
         </div>
         <div className="order-0 xl:order-1">
@@ -75,7 +84,7 @@ const GameBottomBar = ({
           <div className="3xl:gap-20 flex items-center justify-between gap-3 rounded-lg bg-bgColor2 px-6 py-2">
             {/* <div className="text-lg xl:text-sm 2xl:text-lg">$100</div> */}
             <div className="flex items-center">
-              <p>$</p>
+              <p>₿</p>
               <input
                 type="text"
                 value={betAmount}

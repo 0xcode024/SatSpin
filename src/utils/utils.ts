@@ -58,3 +58,9 @@ export const formatNumber = (num: any) => {
 
   return formatted;
 };
+
+export const shortenNumber = (num: number) => {
+  return Number(num)
+    .toFixed(8)
+    .replace(/\.?0+$/, "");
+};

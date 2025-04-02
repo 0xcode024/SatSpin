@@ -257,7 +257,15 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
           </div>
         </div>
         <div className="flex gap-5">
-          <BalanceBox balance={paymentAddress ? String(point) : "--"} />
+          <BalanceBox
+            balance={
+              paymentAddress
+                ? Number(point / 10 ** 8)
+                    .toFixed(8)
+                    .replace(/\.?0+$/, "")
+                : "--"
+            }
+          />
           <ButtonDefault
             label="Deposit"
             customClasses="bg-darkButton px-16 border-0 font-space text-sm hidden lg:block"

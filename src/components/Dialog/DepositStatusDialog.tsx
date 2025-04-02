@@ -1,3 +1,5 @@
+import { HiCheckCircle } from "react-icons/hi";
+
 interface DepositStatusDialogProps {
   amount: string;
   from: string;
@@ -22,7 +24,10 @@ const DepositStatusDialog = ({
           <span> {amount} BTC </span>
           <span className="italic">from {from}</span>
         </div>
-        <div className="relative">
+        <div className="relative flex flex-col items-center justify-center">
+          {progress == 100 && (
+            <HiCheckCircle style={{ fontSize: "50px", color: "#06894A" }} />
+          )}
           <div className="pb-4">{status}</div>
           <div className="bg-gray-300 relative h-2 w-full rounded-full border border-borderColor1">
             <div
@@ -30,13 +35,13 @@ const DepositStatusDialog = ({
               style={{
                 width: `${progress}%`, // Control the width based on progress
                 backgroundImage:
-                  progress > 0
+                  progress < 100
                     ? "linear-gradient(45deg, #029055 60%, transparent 25%)"
                     : "none", // Line pattern only when there is progress
                 backgroundSize: "20px 10%", // Make the lines fill the height of the bar
                 backgroundRepeat: "repeat",
                 animation:
-                  progress > 0
+                  progress < 100
                     ? "flow 0.5s linear infinite" // Apply animation only when there's progress
                     : "none",
               }}

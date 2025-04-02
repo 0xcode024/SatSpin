@@ -15,6 +15,7 @@ import { JWT_COOKIE } from "@/constants/auth.constants";
 import { useLaserEyes } from "@omnisat/lasereyes";
 import { useAccountContext } from "@/context/AccountContext";
 import { toast } from "sonner";
+import { shortenNumber } from "@/utils/utils";
 
 type HistoryEntry = {
   status: boolean;
@@ -67,7 +68,7 @@ const GameBoard = () => {
         for (const item of response.history) {
           history.push({
             status: item.win,
-            amount: item.payout,
+            amount: Number(shortenNumber(item.payout / 10 ** 8)),
           });
         }
         setGameHistory(history);
@@ -146,7 +147,7 @@ const GameBoard = () => {
           `${BASE_URL}api/games/coinflip/play`,
           {
             bet: selectedSide,
-            amount: betAmount,
+            amount: betAmount * 10 ** 8,
             current: current,
           },
           {
@@ -161,20 +162,25 @@ const GameBoard = () => {
         })
         .catch((err) => console.error("Error fetching points:", err));
       console.log("bet result", response);
+      const payout = shortenNumber(response.payout / 10 ** 8);
+      const newBalance = shortenNumber(response.newBalance / 10 ** 8);
 
       setTimeout(() => {
         setPoint(response.newBalance);
         toast.info(
           response.win
-            ? `🎉 Congratulations! You won the coin flip! You gained ${response.payout}. Your new balance is ${response.newBalance}.`
-            : `😢 Oh no! You lost the coin flip. You lost ${response.payout}. Your new balance is ${response.newBalance}.`,
+            ? `🎉 Congratulations! You won the coin flip! You gained ${payout}. Your new balance is ${newBalance}.`
+            : `😢 Oh no! You lost the coin flip. You lost ${payout}. Your new balance is ${newBalance}.`,
           {
             duration: 2000,
           }
         );
         setGameHistory([
           ...gameHistory,
-          { status: response.win, amount: response.payout },
+          {
+            status: response.win,
+            amount: Number(shortenNumber(response.payout / 10 ** 8)),
+          },
         ]);
       }, 500 * response.num);
 

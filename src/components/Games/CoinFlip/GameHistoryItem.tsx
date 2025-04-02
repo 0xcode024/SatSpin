@@ -22,7 +22,7 @@ const GameHistoryItem = ({ status, amount }: GameHistoryItemProps) => {
 
           <div className="text-tColor2">
             {status ? "+" : "-"}
-            {amount}USD
+            {amount}BTC
           </div>
         </div>
       </div>

@@ -15,7 +15,7 @@ import {
   NetworkType,
 } from "@omnisat/lasereyes";
 import { AuthContext } from "@/context/AuthContext";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { SUPPORTED_WALLETS } from "@/context/AuthContext/auth.types";
 import {
   MAGIC_EDEN as magicEdenLogo,
@@ -44,6 +44,7 @@ interface ConnectWalletDialogProps {
   onClose: () => void;
 }
 const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
+  const [seletedWallet, setSeletedWallet] = useState("");
   const {
     wallet: myWalletInfo,
     loginWithWallet,
@@ -100,9 +101,11 @@ const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
             <WalletItem
               name={key}
               image={value.logo}
+              isSeleted={seletedWallet == key}
               key={key}
               onClick={() => {
-                handleConnectWallet(key);
+                // handleConnectWallet(key);
+                setSeletedWallet(key);
               }}
             />
           ))}
@@ -118,7 +121,9 @@ const ConnectWalletDialog = ({ onClose, open }: ConnectWalletDialogProps) => {
         <div className="w-full">
           <ButtonDefault
             label="Connect"
-            onClick={() => onClose()}
+            onClick={() => {
+              if (seletedWallet != "") handleConnectWallet(seletedWallet);
+            }}
             customClasses="w-full bg-bgColor5 text-black font-space text-sm lg:text-lg font-bold"
           />
         </div>
