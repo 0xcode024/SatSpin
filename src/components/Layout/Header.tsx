@@ -64,7 +64,6 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
 
   useEffect(() => {
     const getPoint = async () => {
-      console.log("getPoint", paymentAddress);
       if (paymentAddress) {
         const response = await axios
           .get(`${BASE_URL}api/users/info/${paymentAddress}`)
@@ -83,104 +82,6 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   const signOut = async () => {
     disconnect();
     logout();
-  };
-
-  const sign = async (message: string) => {
-    try {
-      const result = sessionStorage.getItem(JWT_COOKIE);
-      if (result != null) {
-        if (!isTokenExpired(result)) {
-          return;
-        }
-      }
-      const signature = await signMessage(message, paymentAddress);
-      console.log("signature", signature);
-      const data = {
-        paymentAddress: paymentAddress,
-        paymentPubkey: paymentPublicKey,
-        message: message,
-        signature: signature,
-        userInfo: {
-          username: "",
-          balance: {
-            btc: 0,
-            inscriptions: [],
-            runes: [],
-          },
-          paymentAddress: paymentAddress,
-          paymentPubkey: paymentPublicKey,
-          ordinalAddress: address,
-          ordinalPubkey: publicKey,
-        },
-      };
-      const response = await axios
-        .post(`${BASE_URL}api/auth/login`, { ...data })
-        .then((res) => {
-          return res.data;
-        });
-      console.log("jwt token: ", response.token);
-      sessionStorage.setItem(JWT_COOKIE, response.token);
-      const jwt = sessionStorage.getItem(JWT_COOKIE);
-      console.log("jwt", jwt);
-    } catch (error) {}
-  };
-
-  const getToken = async (): Promise<string | null> => {
-    let token = sessionStorage.getItem(JWT_COOKIE);
-    if (!token || isTokenExpired(token)) {
-      await sign("Sat Spin: Test Message");
-      token = sessionStorage.getItem(JWT_COOKIE);
-    }
-    return token;
-  };
-
-  const depositBTC = async (amount: string) => {
-    try {
-      const token = await getToken();
-      if (!token) {
-        console.error("Failed to retrieve valid token");
-        return;
-      }
-      console.log("Token-------->", token);
-      const response = await axios.post(
-        `${BASE_URL}api/cash/btc/deposit`,
-        { amount },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
-      console.log("Response data of deposit", response.data);
-      if (response.data?.psbt?.hex) {
-        const { hex, base64 } = response.data.psbt;
-        console.log("PSBT Hex:", hex);
-        console.log("PSBT Base64:", base64);
-        const signPsbtResponse = await signPsbt(hex, true, false);
-        console.log("Signed PSBT Response:", signPsbtResponse);
-        if (!signPsbtResponse?.signedPsbtHex) {
-          console.error("Failed to sign PSBT");
-          return;
-        }
-        const txResponse = await axios.post(
-          `${BASE_URL}api/tx/push`,
-          { txHex: signPsbtResponse.signedPsbtHex },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-        console.log("Transaction Push Response:", txResponse.data);
-      }
-    } catch (error: any) {
-      console.error(
-        "Deposit BTC Error:",
-        error?.response?.data || error.message
-      );
-    }
   };
 
   useEffect(() => {
@@ -270,8 +171,6 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             label="Deposit"
             customClasses="bg-darkButton px-16 border-0 font-space text-sm hidden lg:block"
             onClick={() => {
-              // depositBTC("1000");
-              // onDeposit();
               setShow(true);
             }}
           />
