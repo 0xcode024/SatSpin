@@ -136,7 +136,7 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
   }, [paymentAddress]);
 
   return (
-    <div className="fixed left-0 right-0 top-0 z-20 border-b border-b-borderColor1  bg-darkGray">
+    <div className="fixed left-0 right-0 top-0 z-30 border-b border-b-borderColor1 bg-darkGray">
       <div className="flex h-[118px] items-center justify-between px-2 pb-7 pt-14 sm:px-4 md:px-8 lg:px-12 lg:py-7">
         <div className="flex flex-row gap-4">
           <div
@@ -214,12 +214,7 @@ const Header = ({ onDeposit, onConnect }: HeaderProps) => {
             icon={sound}
             size={20}
             customClasses="hidden lg:block"
-            onClick={() => {
-              console.log("network --->", network);
-              console.log("connected --->", connected);
-              console.log("mywallet info", myWalletInfo);
-              console.log("paymentAddress", paymentAddress);
-            }}
+            onClick={() => {}}
           />
         </div>
       </div>
