@@ -51,17 +51,12 @@ const GameBoard = () => {
   useEffect(() => {
     const fetchHistory = async () => {
       if (!paymentAddress) return;
-      console.log(
-        "HISTORY => ",
-        `${BASE_URL}api/games/coinflip/history/${paymentAddress}`
-      );
       const response = await axios
         .get(`${BASE_URL}api/games/coinflip/history/${paymentAddress}`)
         .then((res) => {
           return res.data;
         })
         .catch((err) => console.error("Error fetching points:", err));
-      console.log("res history:", response);
       let history: HistoryEntry[] = [];
 
       if (response) {
@@ -87,7 +82,6 @@ const GameBoard = () => {
         }
       }
       const signature = await signMessage(message, paymentAddress);
-      console.log("signature", signature);
 
       const data = {
         paymentAddress: paymentAddress,
@@ -113,11 +107,8 @@ const GameBoard = () => {
         .then((res) => {
           return res.data;
         });
-      console.log("jwt token: ", response.token);
       sessionStorage.setItem(JWT_COOKIE, response.token);
       const jwt = sessionStorage.getItem(JWT_COOKIE);
-
-      console.log("jwt", jwt);
     } catch (error) {}
   };
 
@@ -168,7 +159,6 @@ const GameBoard = () => {
           return res.data;
         })
         .catch((err) => console.error("Error fetching points:", err));
-      console.log("bet result", response);
       const payout = shortenNumber(response.payout / 10 ** 8);
       const newBalance = shortenNumber(response.newBalance / 10 ** 8);
 

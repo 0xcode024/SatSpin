@@ -86,7 +86,7 @@ const GameBottomBar = ({
             <div className="flex items-center">
               <p>₿</p>
               <input
-                type="text"
+                type="number"
                 value={betAmount}
                 onChange={(e: any) => {
                   console.log(e.target.value);
