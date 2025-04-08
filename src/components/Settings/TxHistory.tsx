@@ -38,6 +38,7 @@ const TxHistory = () => {
       <div className="flex flex-col gap-3 md:hidden">
         {txHistoryData.map((tx, key) => (
           <MobileTxItem
+            key={key}
             tx_type={tx.tx_type}
             txId={tx.txId}
             amount={tx.amount}
