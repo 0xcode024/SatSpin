@@ -1,6 +1,7 @@
 import { HiCheckCircle } from "react-icons/hi";
 
 interface DepositStatusDialogProps {
+  option: boolean;
   amount: string;
   from: string;
   progress: number;
@@ -8,19 +9,23 @@ interface DepositStatusDialogProps {
 }
 
 const DepositStatusDialog = ({
+  option,
   amount,
   from,
   progress,
   status,
 }: DepositStatusDialogProps) => {
-  const isCompleted = progress === 100; // Check if progress is 100%
-
   return (
-    <div className="fixed inset-0 z-50 flex w-screen items-center justify-center overflow-y-auto bg-black bg-opacity-60 shadow-lg backdrop-blur-xl">
+    <div className="z-60 fixed inset-0 flex w-screen items-center justify-center overflow-y-auto bg-black bg-opacity-60 shadow-lg backdrop-blur-xl">
       <div className="opactiy-100 relative flex w-[500px] flex-col items-center justify-center gap-10 rounded-lg bg-bgColor9 px-[5%] pb-[70px] pt-[50px] text-center text-white lg:items-stretch lg:justify-center">
-        <div className="text-bold text-2xl">Deposit</div>
+        <div className="text-bold text-2xl">
+          {" "}
+          {option ? "Withdraw" : "Deposit"}
+        </div>
         <div className="text-bold text-md">
-          <span className="italic">Depositing</span>
+          <span className="italic">
+            {option ? "Withdrawing" : "Depositing"}
+          </span>
           <span> {amount} BTC </span>
           <span className="italic">from {from}</span>
         </div>

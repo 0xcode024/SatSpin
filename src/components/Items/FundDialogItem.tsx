@@ -24,7 +24,7 @@ const FundDialogItem = ({
       <div className="flex items-center justify-between gap-3">
         <input
           className="w-[120px] bg-transparent outline-none"
-          type="text"
+          type="number"
           value={amount}
           onChange={(e) => setAmount(e.target.value)}
         />

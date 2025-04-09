@@ -1,6 +1,5 @@
 import { depositCoins } from "@/static/coins";
 import FundDialogItem from "../Items/FundDialogItem";
-import qr from "@/assets/images/qr/qr.png";
 import esc from "@/assets/images/esc.png";
 import { useEffect, useState } from "react";
 import ButtonDefault from "../Buttons/ButtonDefault";
@@ -12,6 +11,9 @@ import axios from "axios";
 import DepositStatusDialog from "./DepositStatusDialog";
 import { delay } from "@/utils/utils";
 import { shortenAddress } from "@/utils/bitcoin.utils";
+import { toast } from "sonner";
+import { useAccountContext } from "@/context/AccountContext";
+import { error } from "console";
 
 interface ManageFundDialogProps {
   open: boolean;
@@ -27,11 +29,13 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
   const {
     signPsbt,
     signMessage,
+    balance,
     paymentAddress,
     paymentPublicKey,
     address,
     publicKey,
   } = useLaserEyes();
+  const { point, setPoint } = useAccountContext();
 
   const sign = async (message: string) => {
     try {
@@ -42,7 +46,6 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
         }
       }
       const signature = await signMessage(message, paymentAddress);
-      console.log("signature", signature);
       const data = {
         paymentAddress: paymentAddress,
         paymentPubkey: paymentPublicKey,
@@ -66,10 +69,8 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
         .then((res) => {
           return res.data;
         });
-      console.log("jwt token: ", response.token);
       sessionStorage.setItem(JWT_COOKIE, response.token);
       const jwt = sessionStorage.getItem(JWT_COOKIE);
-      console.log("jwt", jwt);
     } catch (error) {}
   };
 
@@ -81,8 +82,18 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
     }
     return token;
   };
+
   const depositBTC = async (amount: string) => {
     try {
+      if (balance && balance < Number(amount)) {
+        toast.info("Insufficient wallet balance", {
+          duration: 1000,
+        });
+        setShowDepositDialog(false);
+        setProgress(0);
+        setDepositStatus("");
+        return;
+      }
       const token = await getToken();
       if (!token) {
         console.error("Failed to retrieve valid token");
@@ -94,7 +105,6 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
       await delay(500);
       setProgress(20);
       setDepositStatus("Please approve the trasnaction to confirm the deposit");
-
       const response = await axios.post(
         `${BASE_URL}api/cash/btc/deposit`,
         { amount },
@@ -105,21 +115,20 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
           },
         }
       );
-      console.log("Response data of deposit", response.data);
       if (response.data?.psbt?.hex) {
         const { hex, base64 } = response.data.psbt;
-        console.log("PSBT Hex:", hex);
-        console.log("PSBT Base64:", base64);
+
         setProgress(50);
         setDepositStatus(
           "Please approve the trasnaction to confirm the deposit"
         );
         const signPsbtResponse = await signPsbt(hex, true, false);
-        console.log("Signed PSBT Response:", signPsbtResponse);
+
         if (!signPsbtResponse?.signedPsbtHex) {
           console.error("Failed to sign PSBT");
           return;
         }
+
         setProgress(80);
         setDepositStatus("Sent. Awaiting confirmation...");
         const txResponse = await axios.post(
@@ -133,11 +142,69 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
           }
         );
         setDepositStatus("Confirmed. Awaiting to be finalized...");
-        console.log("Transaction Push Response:", txResponse.data);
       }
     } catch (error: any) {
+      toast.info("Deposit Rejected", {
+        duration: 1000,
+      });
+      setShowDepositDialog(false);
+      setProgress(0);
+      setDepositStatus("");
+      onClose();
       console.error(
         "Deposit BTC Error:",
+        error?.response?.data || error.message
+      );
+    }
+  };
+
+  const withdrawBTC = async (amount: string) => {
+    try {
+      if (Number(amount) > point) {
+        toast.info("Insufficient withdraw amount", {
+          duration: 1000,
+        });
+        setShowDepositDialog(false);
+        setProgress(0);
+        setDepositStatus("");
+        return;
+      }
+
+      const token = await getToken();
+      if (!token) {
+        console.error("Failed to retrieve valid token");
+        throw new Error("Failed to retrieve valid token");
+      }
+      setShowDepositDialog(true);
+
+      const response = await axios.post(
+        `${BASE_URL}api/cash/btc/withdraw`,
+        { amount },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setProgress(70);
+      setDepositStatus("Sent. Awaiting confirmation...");
+
+      console.log("Response data of withdraw", response.data);
+
+      await delay(1000);
+      setProgress(80);
+      setDepositStatus("Confirmed. Awaiting to be finalized...");
+    } catch (error: any) {
+      toast.info("Withdraw Rejected", {
+        duration: 1000,
+      });
+      setShowDepositDialog(false);
+      setProgress(0);
+      setDepositStatus("");
+      onClose();
+      console.error(
+        "Withdraw BTC Error:",
         error?.response?.data || error.message
       );
     }
@@ -149,7 +216,7 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
       if (data.user.paymentAddress == paymentAddress) {
         setDepositStatus("Your updated balance will reflect shortly");
         setProgress(100);
-        delay(2000).then(() => {
+        delay(3000).then(() => {
           setShowDepositDialog(false);
           onClose();
         });
@@ -192,13 +259,28 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
             ))}
           </div>
           <ButtonDefault
-            label="Deposit"
+            label={toogle ? "Withdraw" : "Deposit"}
             customClasses="bg-bitcoin-orange px-8 py-5 sm:px-12 lg:px-16 border-0 font-space lg:text-xl text-lg text-black mt-10"
             onClick={async () => {
-              console.log("lol");
-              await depositBTC(
-                BigInt(Math.round(parseFloat(btcAmount) * 10 ** 8)).toString()
-              );
+              if (Number(btcAmount) == 0) {
+                toast.info("Please enter the amount", {
+                  duration: 500,
+                });
+              } else {
+                if (toogle) {
+                  await withdrawBTC(
+                    BigInt(
+                      Math.round(parseFloat(btcAmount) * 10 ** 8)
+                    ).toString()
+                  );
+                } else {
+                  await depositBTC(
+                    BigInt(
+                      Math.round(parseFloat(btcAmount) * 10 ** 8)
+                    ).toString()
+                  );
+                }
+              }
             }}
           />
         </div>
@@ -211,9 +293,10 @@ const ManageFundsDialog = ({ onClose, open }: ManageFundDialogProps) => {
       </div>
       {showDepositDialog && (
         <DepositStatusDialog
+          option={toogle}
           progress={progress}
           from={shortenAddress(paymentAddress)}
-          amount={btcAmount}
+          amount={Number(btcAmount).toString()}
           status={depositStatus}
         />
       )}
